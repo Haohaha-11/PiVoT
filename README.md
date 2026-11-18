@@ -25,6 +25,14 @@ See [Quick start](#-quick-start) to run it, [Results](#-results-at-a-glance) for
   shown are the service's real output for this request (<a href="examples/">examples/</a>).</em>
 </p>
 
+<p align="center">
+  <a href="assets/pivot-demo.mp4"><img src="assets/pivot-demo-poster.jpg" width="72%" alt="Play the 2-minute demo video"></a>
+</p>
+<p align="center">
+  <em>🎬 A 2-minute walkthrough (<a href="assets/pivot-demo.mp4">assets/pivot-demo.mp4</a>). Dot, the PiVoT cat, points at
+  what the narration describes.</em>
+</p>
+
 ## 📌 Results at a glance
 
 Both test sets use documentation that development never touched, and both were frozen before any system ran on
@@ -506,4 +514,4 @@ To run against a live model, drop `--cache-mode replay` and set `VERIFIER_API_KE
 | `pilot/` | The three pilot rounds and their findings |
 | `examples/` | The request, response and recorded calls shown above |
 | `tests/` | 53 tests |
-| `assets/`, `tools/` | The logo, the banner cut from it (`tools/make_banner.py`), and the overview figure with the script that draws it (`tools/make_overview.py`) |
+| `assets/`, `tools/` | The logo, the banner cut from it (`tools/make_banner.py`), the overview figure with the script that draws it (`tools/make_overview.py`), and the demo video with its poster |
