@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/pivot-logo-banner.svg" width="100%" alt="PiVoT: Point, don't paraphrase.">
+  <img src="assets/pivot-logo-banner.png" width="100%" alt="PiVoT: Point, don't paraphrase.">
 </p>
 
 <h3 align="center">When Paraphrase Is Easy and Logic Is Not:<br>A Reasoning-Stratified Benchmark and Pointer-Based Verifier for Citation Grounding</h3>
@@ -506,4 +506,4 @@ To run against a live model, drop `--cache-mode replay` and set `VERIFIER_API_KE
 | `pilot/` | The three pilot rounds and their findings |
 | `examples/` | The request, response and recorded calls shown above |
 | `tests/` | 53 tests |
-| `assets/`, `tools/` | The logo, the banner and the overview figure, and the scripts that draw them (`tools/make_banner.py`, `tools/make_overview.py`) |
+| `assets/`, `tools/` | The logo, the banner cut from it (`tools/make_banner.py`), and the overview figure with the script that draws it (`tools/make_overview.py`) |
