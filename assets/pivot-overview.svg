@@ -4,7 +4,8 @@
 <rect x="24.0" y="24.0" width="348.0" height="600.0" rx="18" fill="#F6F8FA" stroke="#D0D7DE" stroke-width="1.6"/>
 <text x="44.0" y="70.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="24" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Input</text>
 <rect x="38.0" y="90.0" width="320.0" height="299.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
-<path d="M52 106 h11.0 l6.16 6.16 v15.84 h-17.16z" fill="#FFFFFF" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M63.0 106 v6.16 h6.16" fill="none" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M55.52 117.44 h10.120000000000001 M55.52 122.28 h10.120000000000001" stroke="#57606A" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M54.4 106.8 h10.0 l5.6000000000000005 5.6000000000000005 v14.399999999999999 h-15.600000000000001z" fill="#FFFFFF" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M64.4 106.8 v5.6000000000000005 h5.6000000000000005" fill="none" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M57.6 117.2 h9.200000000000001 M57.6 121.6 h9.200000000000001" stroke="#57606A" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M50 110 h10.0 l5.6000000000000005 5.6000000000000005 v14.399999999999999 h-15.600000000000001z" fill="#FFFFFF" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M60.0 110 v5.6000000000000005 h5.6000000000000005" fill="none" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M53.2 120.4 h9.200000000000001 M53.2 124.8 h9.200000000000001" stroke="#57606A" stroke-width="1.6" stroke-linecap="round"/>
 <text x="82.0" y="124.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Context passages</text>
 <rect x="52.0" y="148.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
 <text x="89.0" y="167.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P0.S0</text>
@@ -21,7 +22,8 @@
 <text x="136.0" y="336.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">1000 pages.</text>
 <text x="344.0" y="373.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" font-weight="400" fill="#5B4BDB" text-anchor="end" xml:space="preserve" font-style="italic">sentence IDs added by code</text>
 <rect x="38.0" y="405.0" width="320.0" height="203.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
-<path d="M52 421 h11.0 l6.16 6.16 v15.84 h-17.16z" fill="#FFFFFF" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M63.0 421 v6.16 h6.16" fill="none" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M55.52 432.44 h10.120000000000001 M55.52 437.28 h10.120000000000001" stroke="#57606A" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M55.2 423.6 H68.8 Q72.9 423.6 72.9 427.8 V434.6 Q72.9 438.7 68.8 438.7 H59.9 L54.7 443.9 L55.8 438.7 H55.2 Q51.1 438.7 51.1 434.6 V427.8 Q51.1 423.6 55.2 423.6Z" fill="#FFFFFF" stroke="#57606A" stroke-width="1.77" stroke-linejoin="round"/>
+<path d="M62 425.7083333333333 Q62 431.125 67.41666666666667 431.125 Q62 431.125 62 436.5416666666667 Q62 431.125 56.583333333333336 431.125 Q62 431.125 62 425.7083333333333Z" fill="#0E9F8A"/>
 <text x="82.0" y="439.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Generated answer</text>
 <text x="54.0" y="477.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">The default page size is 8192</text>
 <text x="54.0" y="505.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">bytes, and checkpoints run every</text>
@@ -34,7 +36,8 @@
 <rect x="424.0" y="92.0" width="180.5" height="30.0" rx="15.0" fill="#FFFFFF" stroke="#0E9F8A" stroke-width="1.4"/>
 <path d="M444 98.5 Q444 107.0 452.5 107.0 Q444 107.0 444 115.5 Q444 107.0 435.5 107.0 Q444 107.0 444 98.5Z" fill="#0E9F8A"/>
 <text x="459.0" y="112.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#0E9F8A" text-anchor="start" xml:space="preserve">LLM · thinking off</text>
-<text x="424.0" y="148.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">Split into claims; point at sentence IDs.</text>
+<path d="M427.3 133.4 L427.3 148.2 L431.3 144.7 L434.1 150.7 L436.6 149.6 L433.9 143.7 L438.9 143.7Z" fill="#0E9F8A" stroke="#0E9F8A" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="448.0" y="148.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">Split into claims; point at sentence IDs.</text>
 <rect x="424.0" y="168.0" width="198.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
 <circle cx="448" cy="194" r="15" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
 <text x="448.0" y="199.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c1</text>
@@ -45,6 +48,8 @@
 <text x="666.0" y="207.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#CF222E" text-anchor="middle" xml:space="preserve">refutes</text>
 <rect x="710.0" y="203.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
 <text x="747.0" y="222.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P0.S1</text>
+<circle cx="782" cy="203" r="8.5" fill="#CF222E" stroke="#FFFFFF" stroke-width="1.6"/>
+<path d="M778.8 199.8 L785.2 206.2 M785.2 199.8 L778.8 206.2" fill="none" stroke="#FFFFFF" stroke-width="2.12" stroke-linecap="round"/>
 <rect x="424.0" y="280.0" width="198.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
 <circle cx="448" cy="306" r="15" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
 <text x="448.0" y="311.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c2</text>
@@ -54,6 +59,8 @@
 <text x="666.0" y="319.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#1A7F37" text-anchor="middle" xml:space="preserve">entails</text>
 <rect x="710.0" y="315.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
 <text x="747.0" y="334.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P1.S0</text>
+<circle cx="782" cy="315" r="8.5" fill="#1A7F37" stroke="#FFFFFF" stroke-width="1.6"/>
+<path d="M778.2 315.2 L780.9 318.0 L786.0 312.2" fill="none" stroke="#FFFFFF" stroke-width="2.12" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="424.0" y="392.0" width="198.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
 <circle cx="448" cy="418" r="15" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
 <text x="448.0" y="423.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c3</text>
@@ -65,7 +72,9 @@
 <circle cx="747" cy="441" r="15" fill="#FFFFFF" stroke="#8C959F" stroke-width="1.8"/>
 <text x="747.0" y="447.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#57606A" text-anchor="middle" xml:space="preserve">∅</text>
 <rect x="424.0" y="510.0" width="360.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
-<text x="438.0" y="536.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="600" fill="#57606A" text-anchor="start" xml:space="preserve">Model output: IDs only, no quotes</text>
+<rect x="439.5" y="522.7" width="21.0" height="16.6" rx="3.5" fill="#FFFFFF" stroke="#57606A" stroke-width="1.5"/>
+<text x="450.0" y="535.4" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="13.125" font-weight="700" fill="#57606A" text-anchor="middle" xml:space="preserve">{}</text>
+<text x="468.0" y="536.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="600" fill="#57606A" text-anchor="start" xml:space="preserve">Model output: IDs only, no quotes</text>
 <text x="438.0" y="565.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">{"sid": "P0.S1", "rel": "refutes"}</text>
 <text x="438.0" y="591.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">{"sid": "P1.S0", "rel": "entails"}</text>
 <rect x="836.0" y="24.0" width="344.0" height="600.0" rx="18" fill="#FFF1E3" stroke="#D9661A" stroke-width="1.6" stroke-dasharray="7 6"/>
@@ -89,14 +98,19 @@
 <circle cx="1034.984375" cy="105.47" r="5.27" fill="#D9661A"/><rect x="1032.43" y="111.25" width="5.10" height="1.70" rx="1.5" fill="#D9661A"/><rect x="1033.28" y="113.63" width="3.40" height="1.36" rx="1.5" fill="#D9661A"/>
 <text x="1050.0" y="112.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#D9661A" text-anchor="start" xml:space="preserve">thinking on</text>
 <rect x="852.0" y="136.0" width="312.0" height="170.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
-<text x="866.0" y="164.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17.5" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">A claim is flagged if</text>
-<circle cx="873" cy="187" r="3.2" fill="#5B4BDB"/>
+<line x1="868.2" y1="149.7" x2="868.2" y2="166.3" stroke="#5B4BDB" stroke-width="1.83" stroke-linecap="round"/><path d="M868.2 150.1 H881.5 L877.8 154.0 L881.5 158.0 H868.2 Z" fill="#5B4BDB"/>
+<text x="892.0" y="164.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17.5" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">A claim is flagged if</text>
+<rect x="861.5" y="177.5" width="19.0" height="19.0" rx="4.5" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.2"/>
+<text x="871.0" y="191.6" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="13" font-weight="800" fill="#5B4BDB" text-anchor="middle" xml:space="preserve">#</text>
 <text x="886.0" y="193.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">its number is not in the evidence</text>
-<circle cx="873" cy="215" r="3.2" fill="#5B4BDB"/>
+<rect x="861.5" y="205.5" width="19.0" height="19.0" rx="4.5" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.2"/>
+<text x="871.0" y="219.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="800" fill="#5B4BDB" text-anchor="middle" xml:space="preserve">!</text>
 <text x="886.0" y="221.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">it says only, must or always</text>
-<circle cx="873" cy="243" r="3.2" fill="#5B4BDB"/>
+<rect x="861.5" y="233.5" width="19.0" height="19.0" rx="4.5" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.2"/>
+<text x="871.0" y="247.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="800" fill="#5B4BDB" text-anchor="middle" xml:space="preserve">±</text>
 <text x="886.0" y="249.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">evidence both supports and refutes</text>
-<circle cx="873" cy="271" r="3.2" fill="#5B4BDB"/>
+<rect x="861.5" y="261.5" width="19.0" height="19.0" rx="4.5" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.2"/>
+<text x="871.0" y="275.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="800" fill="#5B4BDB" text-anchor="middle" xml:space="preserve">?</text>
 <text x="886.0" y="277.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">the model marked it unsure</text>
 <circle cx="874" cy="352" r="17" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
 <text x="874.0" y="357.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c1</text>
@@ -114,7 +128,8 @@
 <text x="874.0" y="525.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c3</text>
 <line x1="896.0" y1="520.0" x2="944.0" y2="520.0" stroke="#8C959F" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="5 6" marker-end="url(#a8C959F)"/>
 <text x="954.0" y="526.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">first-pass result kept</text>
-<text x="1008.0" y="598.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#D9661A" text-anchor="middle" xml:space="preserve">≈ ¼–⅓ of claims get thinking</text>
+<path d="M872.4 585.7 H888.2 L882.3 592.6 V599.1 L878.2 597.2 V592.6 Z" fill="#D9661A" stroke="#D9661A" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="899.3" y="598.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#D9661A" text-anchor="start" xml:space="preserve">≈ ¼–⅓ of claims get thinking</text>
 <rect x="1216.0" y="24.0" width="360.0" height="600.0" rx="18" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.6" stroke-dasharray="7 6"/>
 <circle cx="1252" cy="62" r="17" fill="#5B4BDB"/>
 <text x="1252.0" y="69.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">3</text>
@@ -132,34 +147,40 @@
 <circle cx="1252" cy="107.0" r="5.95"/></g><circle cx="1252" cy="107.0" r="2.55" fill="#FFFFFF"/>
 <text x="1267.0" y="112.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#5B4BDB" text-anchor="start" xml:space="preserve">deterministic code</text>
 <rect x="1232.0" y="136.0" width="328.0" height="106.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
-<text x="1246.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">verdict</text>
-<text x="1328.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
-<text x="1356.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">entails / refutes edges</text>
-<text x="1246.0" y="195.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">quote</text>
-<text x="1328.0" y="195.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
-<text x="1356.0" y="195.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">passage[start:end]</text>
-<text x="1246.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">numbers</text>
-<text x="1328.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
-<text x="1356.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">computed by code</text>
+<g stroke="#5B4BDB" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M1254.0 152.9 V167.1 M1250.0 167.1 H1258.0 M1247.7 154.9 H1260.3"/><path d="M1244.3 161.2 Q1247.7 165.1 1251.0 161.2 Z M1247.7 154.9 L1244.3 161.2 M1247.7 154.9 L1251.0 161.2" fill="#5B4BDB"/><path d="M1257.0 161.2 Q1260.3 165.1 1263.7 161.2 Z M1260.3 154.9 L1257.0 161.2 M1260.3 154.9 L1263.7 161.2" fill="#5B4BDB"/></g>
+<text x="1272.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">verdict</text>
+<text x="1351.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
+<text x="1376.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">entails / refutes edges</text>
+<g fill="none" stroke="#5B4BDB" stroke-width="1.66" stroke-linecap="round"><circle cx="1248.5" cy="184.9" r="2.7"/><circle cx="1248.5" cy="193.1" r="2.7"/><path d="M1250.7 186.3 L1261.5 193.0 M1250.7 191.7 L1261.5 185.0"/></g>
+<text x="1272.0" y="195.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">quote</text>
+<text x="1351.0" y="195.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
+<text x="1376.0" y="195.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">passage[start:end]</text>
+<rect x="1247.7" y="209.7" width="12.7" height="16.6" rx="2.1" fill="#FFFFFF" stroke="#5B4BDB" stroke-width="1.43"/><rect x="1249.9" y="212.0" width="8.2" height="3.6" rx="0.8" fill="#5B4BDB"/><g fill="#5B4BDB"><circle cx="1250.7" cy="218.9" r="0.99"/><circle cx="1250.7" cy="221.6" r="0.99"/><circle cx="1250.7" cy="224.3" r="0.99"/><circle cx="1254.0" cy="218.9" r="0.99"/><circle cx="1254.0" cy="221.6" r="0.99"/><circle cx="1254.0" cy="224.3" r="0.99"/><circle cx="1257.3" cy="218.9" r="0.99"/><circle cx="1257.3" cy="221.6" r="0.99"/><circle cx="1257.3" cy="224.3" r="0.99"/></g>
+<text x="1272.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">numbers</text>
+<text x="1351.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
+<text x="1376.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">computed by code</text>
 <rect x="1232.0" y="258.0" width="328.0" height="108.0" rx="10" fill="#FFFFFF" stroke="#CF222E" stroke-width="1.6"/>
-<rect x="1244.0" y="270.0" width="138.8" height="26.0" rx="13" fill="#CF222E" stroke="none" stroke-width="1.5"/>
-<text x="1313.4" y="288.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">CONTRADICTED</text>
+<rect x="1244.0" y="270.0" width="156.8" height="26.0" rx="13" fill="#CF222E" stroke="none" stroke-width="1.5"/>
+<path d="M1257.0 280.0 L1263.0 286.0 M1263.0 280.0 L1257.0 286.0" fill="none" stroke="#FFFFFF" stroke-width="2.00" stroke-linecap="round"/>
+<text x="1272.0" y="288.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="start" xml:space="preserve">CONTRADICTED</text>
 <circle cx="1532" cy="283" r="14" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
 <text x="1532.0" y="288.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c1</text>
 <line x1="1246" y1="308" x2="1246" y2="354" stroke="#0E9F8A" stroke-width="3" stroke-linecap="round"/>
 <text x="1258.0" y="322.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve" font-style="italic">“The default page size is 4096 bytes.”</text>
 <text x="1258.0" y="345.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="14.5" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">passage 0 · chars 48–84</text>
 <rect x="1232.0" y="378.0" width="328.0" height="108.0" rx="10" fill="#FFFFFF" stroke="#1A7F37" stroke-width="1.6"/>
-<rect x="1244.0" y="390.0" width="112.0" height="26.0" rx="13" fill="#1A7F37" stroke="none" stroke-width="1.5"/>
-<text x="1300.0" y="408.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">SUPPORTED</text>
+<rect x="1244.0" y="390.0" width="130.0" height="26.0" rx="13" fill="#1A7F37" stroke="none" stroke-width="1.5"/>
+<path d="M1256.4 403.2 L1259.0 405.8 L1263.8 400.4" fill="none" stroke="#FFFFFF" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1272.0" y="408.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="start" xml:space="preserve">SUPPORTED</text>
 <circle cx="1532" cy="403" r="14" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
 <text x="1532.0" y="408.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c2</text>
 <line x1="1246" y1="428" x2="1246" y2="474" stroke="#0E9F8A" stroke-width="3" stroke-linecap="round"/>
 <text x="1258.0" y="442.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve" font-style="italic">“Checkpoints run every 1000 pages.”</text>
 <text x="1258.0" y="465.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="14.5" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">passage 1 · chars 0–33</text>
 <rect x="1232.0" y="498.0" width="328.0" height="110.0" rx="10" fill="#FFFFFF" stroke="#9A6700" stroke-width="1.6"/>
-<rect x="1244.0" y="510.0" width="133.5" height="26.0" rx="13" fill="#9A6700" stroke="none" stroke-width="1.5"/>
-<text x="1310.7" y="528.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">UNSUPPORTED</text>
+<rect x="1244.0" y="510.0" width="151.5" height="26.0" rx="13" fill="#9A6700" stroke="none" stroke-width="1.5"/>
+<text x="1260.0" y="527.3" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">?</text>
+<text x="1272.0" y="528.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="start" xml:space="preserve">UNSUPPORTED</text>
 <circle cx="1532" cy="523" r="14" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
 <text x="1532.0" y="528.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c3</text>
 <text x="1244.0" y="564.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve" font-style="italic">no citation: the passages do not say this</text>
@@ -184,14 +205,20 @@
 <text x="86.0" y="776.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">deterministic code</text>
 <rect x="408.0" y="648.0" width="392.0" height="160.0" rx="10" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.6"/>
 <text x="428.0" y="694.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="25" font-weight="700" fill="#0E9F8A" text-anchor="start" xml:space="preserve">Verbatim by construction</text>
+<circle cx="764" cy="686" r="21" fill="#FFFFFF" stroke="#0E9F8A" stroke-width="1.4"/>
+<g fill="none" stroke="#0E9F8A" stroke-width="2.19" stroke-linecap="round"><circle cx="756.7" cy="680.6" r="3.5"/><circle cx="756.7" cy="691.4" r="3.5"/><path d="M759.6 682.5 L773.9 691.2 M759.6 689.5 L773.9 680.8"/></g>
 <text x="428.0" y="730.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">Quotes are sliced from the passage by ID.</text>
 <text x="428.0" y="755.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">The model never writes one.</text>
 <rect x="836.0" y="648.0" width="344.0" height="160.0" rx="10" fill="#FFF1E3" stroke="#D9661A" stroke-width="1.6"/>
 <text x="856.0" y="694.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="25" font-weight="700" fill="#D9661A" text-anchor="start" xml:space="preserve">31–40% of the tokens</text>
+<circle cx="1144" cy="686" r="21" fill="#FFFFFF" stroke="#D9661A" stroke-width="1.4"/>
+<path d="M1146.1 674.5 L1136.7 688.1 L1143.5 688.1 L1141.9 697.5 L1151.3 683.9 L1144.5 683.9Z" fill="#D9661A" stroke="#D9661A" stroke-width="1" stroke-linejoin="round"/>
 <text x="856.0" y="730.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">of the same model thinking on every</text>
 <text x="856.0" y="755.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">claim (PiVoT v3).</text>
 <rect x="1216.0" y="648.0" width="360.0" height="160.0" rx="10" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.6"/>
 <text x="1236.0" y="694.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="25" font-weight="700" fill="#5B4BDB" text-anchor="start" xml:space="preserve">0.953 · 0.979 accuracy</text>
+<circle cx="1540" cy="686" r="21" fill="#FFFFFF" stroke="#5B4BDB" stroke-width="1.4"/>
+<circle cx="1540" cy="686" r="10.9" fill="none" stroke="#5B4BDB" stroke-width="2.08"/><circle cx="1540" cy="686" r="6.6" fill="none" stroke="#5B4BDB" stroke-width="2.08"/><circle cx="1540" cy="686" r="2.5" fill="#5B4BDB"/>
 <text x="1236.0" y="730.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">on two frozen test sets (v3). Thinking on</text>
 <text x="1236.0" y="755.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">every claim: 0.959 · 0.952.</text>
 </svg>

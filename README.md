@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/pivot-logo-banner.svg" width="520" alt="PiVoT: Point, don't paraphrase.">
+  <img src="assets/pivot-logo-banner.svg" width="100%" alt="PiVoT: Point, don't paraphrase.">
 </p>
 
-<h3 align="center">Citation grounding and faithfulness verification · claim-level verdicts · verbatim quotes by construction</h3>
+<h3 align="center">When Paraphrase Is Easy and Logic Is Not:<br>A Reasoning-Stratified Benchmark and Pointer-Based Verifier for Citation Grounding</h3>
 
 **PiVoT** (*Point, don't paraphrase*) checks an LLM answer against its source passages. It splits the answer into
 atomic claims, labels each one `SUPPORTED`, `CONTRADICTED` or `UNSUPPORTED`, and returns verbatim quotes with
@@ -140,14 +140,64 @@ spread out. Validity means a score reflects real ability: the cases test what go
 are reliable, and the test data was not used in development. This section covers discrimination. The next two cover
 validity.
 
-**Three pilot rounds show that discrimination comes from reasoning claims.** In each round we built cases, ran six
-models on them, and changed the cases according to the result ([pilot/FINDINGS.md](pilot/FINDINGS.md), in Chinese).
+**Three pilot rounds and eight models show that discrimination comes from reasoning claims.** In each round we
+built cases, ran every model on them, and changed the cases according to the result
+([pilot/FINDINGS.md](pilot/FINDINGS.md), in Chinese). Every model ran in two modes. In oracle mode it receives the
+gold claims and only judges them. In end-to-end mode it also splits the answer, so the score includes splitting.
+The models come from four families: Qwen (qwen3.6-35b-a3b, qwen3.7-plus, qwen3.8-flash, qwen3.8-max), DeepSeek
+(deepseek-v4-flash, deepseek-v4.1-flash), Kimi (kimi-k3) and GLM (glm-5.3). All of them use the same minimal prompt.
 
-| Round | What the cases test | Result |
-|---|---|---|
-| 1 | The common recipe: SQLite, Redis and PostgreSQL documentation, with changed numbers and flipped negations | Given the gold claims, 3 models reach 100%. No model labels a fabricated statement `SUPPORTED`. |
-| 2 | Near-miss version numbers, numbers that need a calculation, only-if conditions, widened scope | Only 9 of 130 claims are missed by any model. All 9 involve arithmetic, conditional logic, versions or scope. |
-| 3 | Reasoning only: derived numbers, version ranges, conditions and exceptions, scope, strength of wording ("should" vs "must") | Accuracy spreads from 0.67 to 0.98 across models. Turning thinking on moves the same model by 13 points. |
+| Round | Cases / claims | What changed, and why | Result |
+|---|---|---|---|
+| 1 | 10 / 53 | The common recipe: SQLite WAL and Redis persistence passages, with changed numbers, flipped negations and fabricated details in the answers | Oracle accuracy is 1.00 for three of six models, and no model labels a fabrication `SUPPORTED`. End-to-end accuracy spreads from 0.75 to 0.94, so the spread comes from splitting, not from judging. |
+| 2 | 10 / 130 | Harder along every axis: 9 to 11 passages per case, near-miss numbers and versions, superseded statements, only-if conditions, true facts that the passages do not contain, arithmetic, and two natural answers written by glm-5.3 | Oracle accuracy stays between 0.96 and 0.99. Only 9 of 130 claims are missed by any of the five models with valid output, and all 9 involve arithmetic, conditions, versions or scope. Long context, distractors and outside knowledge mislead no model. |
+| 3 | 11 / 116 | Only what worked in round 2: 52 reasoning claims (derived numbers, version ranges, contrapositive and converse, exceptions, strength of wording, superseded statements) and 64 paraphrased claims as a false-alarm control. PostgreSQL vacuum documentation added | Paraphrased claims: 1.00 for every model with thinking off. Reasoning claims: 0.73 to 1.00 across models and thinking settings. Turning thinking on moves one model by 13 points. |
+
+**The final lineup re-ran all three rounds.** Model versions change quickly, so we ran every round again with five
+current models, with thinking on and, where the provider allows it, off.
+
+| Model | Thinking | Round 1 oracle · e2e | Round 2 oracle · e2e | Round 3 reasoning claims | Round 3 e2e | Round 3 exact quotes | Round 3 median latency | Round 3 output tokens / case |
+|---|---|---|---|---|---|---|---|---|
+| deepseek-v4.1-flash | on | 1.00 · 1.00 | 0.99 · 0.92 | **1.00** | 0.95 | 1.00 | 27 s | 5.4k |
+| deepseek-v4.1-flash | off | – | – | 0.90 | 0.88 | 1.00 | 7 s | 1.2k |
+| glm-5.3 | on (always) | 1.00 · 0.94 | 0.98 · 0.89 | **1.00** | 0.93 | 1.00 | 71 s | 9.5k |
+| kimi-k3 | on | 1.00 · 0.94 | 0.99 · 0.81 | 0.98 | 0.93 | 1.00 | 53 s | 3.0k |
+| kimi-k3 | off | – | – | 0.90 | 0.82 | 1.00 | 23 s | 1.1k |
+| qwen3.8-max | on | – | – | 0.96 | 0.96 | 1.00 | 196 s | 11.9k |
+| qwen3.8-max | off | 1.00 · 0.94 | 0.98 · 0.87 | 0.83 | 0.88 | 0.99 | 21 s | 1.1k |
+| qwen3.8-flash | on | – | – | 0.94 | 0.91 | 0.99 | 100 s | 8.7k |
+| qwen3.8-flash | off | 1.00 · 0.83 | 0.97 · 0.80 | 0.92 | 0.86 | 0.86 | 19 s | 1.6k |
+
+Reasoning-claim accuracy excludes contestable claims. Exact quotes, latency and tokens pool both modes of round 3.
+glm-5.3 wrote the two natural answers of round 2 ([full table](pilot/lineup_report.md)).
+
+**Thinking raises accuracy on reasoning claims and costs on every claim.** Seven models ran round 3 with thinking
+off and on. Accuracy on reasoning claims rises by 2 to 13 points, paraphrased claims stay at 1.00 or drop, and output
+tokens grow 2.7 to 10.5 times ([first lineup](pilot/thinking_comparison.md), [final lineup](pilot/lineup_report.md)).
+
+| Model (thinking off → on) | Reasoning claims | Paraphrased claims | Median latency | Output tokens / case |
+|---|---|---|---|---|
+| qwen3.6-35b-a3b | 0.73 → 0.77 | 1.00 → 1.00 | 13 s → 35 s | 1.6k → 5.8k |
+| qwen3.7-plus | 0.85 → 0.96 | 1.00 → 1.00 | 25 s → 63 s | 1.4k → 4.0k |
+| qwen3.8-flash | 0.92 → 0.94 | 1.00 → 1.00 | 19 s → 100 s | 1.6k → 8.7k |
+| qwen3.8-max | 0.83 → 0.96 | 1.00 → 0.95 | 21 s → 196 s | 1.1k → 11.9k |
+| deepseek-v4-flash | 0.96 → 0.98 | 1.00 → 1.00 | 11 s → 34 s | 1.1k → 3.8k |
+| deepseek-v4.1-flash | 0.90 → 1.00 | 1.00 → 1.00 | 7 s → 27 s | 1.2k → 5.4k |
+| kimi-k3 | 0.90 → 0.98 | 1.00 → 1.00 | 23 s → 53 s | 1.1k → 3.0k |
+
+**The pilot also fixed the base model and the labelling process.**
+
+- **Base model: deepseek-v4.1-flash.** With thinking on it ties for the highest accuracy on reasoning claims (1.00),
+  and it is the fastest thinking configuration (27 s median against 53 to 196 s). Its thinking can be switched off,
+  which gives a same-model comparison of thinking off and on. glm-5.3's thinking cannot be switched off.
+- **Unanimous disagreement triggers a re-check, not a vote.** In round 2, all five models disagreed with the gold
+  label of three recommendations derived from the passages. We checked them against the guideline, which does not
+  count a derived recommendation as support, and changed them to `UNSUPPORTED` and contestable. The label audit of
+  both test sets follows the same rule.
+- **Gray zones went into the guideline.** After thinking was on, the remaining disagreements between models and gold
+  fell on two questions: does dropping "by default" keep a claim supported, and does strengthening "typical" to
+  "required" contradict the passage or only go beyond it. The [guideline](data/guideline.md) settles both before any
+  test case is labelled.
 
 **The final set builds its discrimination on reasoning claims and covers the shapes of real answers.** The dev set
 consists of the pilot cases. In both test sets, every documentation topic has five kinds of answer: fully correct,
@@ -163,7 +213,7 @@ The pilot also produced the three findings that PiVoT is built on:
 
 - ❶ **The difficulty is reasoning, not paraphrase.** Models label paraphrased claims almost perfectly. On claims
   that involve derived numbers, version ranges, conditions and exceptions, or strength of wording, accuracy spreads
-  from 0.67 to 0.98.
+  from 0.73 to 1.00.
 - ❷ **A quote copied by the model is not guaranteed to be verbatim.** When models write their own quotes, the share
   of exact quotes ranges from 0.85 to 1.00 across six models. The typical error is joining pieces of a passage with
   an ellipsis.
@@ -456,4 +506,4 @@ To run against a live model, drop `--cache-mode replay` and set `VERIFIER_API_KE
 | `pilot/` | The three pilot rounds and their findings |
 | `examples/` | The request, response and recorded calls shown above |
 | `tests/` | 53 tests |
-| `assets/`, `tools/` | The logo, the overview figure, and `tools/make_overview.py`, which draws it |
+| `assets/`, `tools/` | The logo, the banner and the overview figure, and the scripts that draw them (`tools/make_banner.py`, `tools/make_overview.py`) |
