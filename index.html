@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PiVoT demo</title>
+<meta name="description" content="A 2-minute narrated walkthrough of PiVoT, a citation grounding and faithfulness verifier: claim-level verdicts with verbatim quotes by construction.">
+<meta property="og:title" content="PiVoT: When Paraphrase Is Easy and Logic Is Not">
+<meta property="og:description" content="A 2-minute narrated walkthrough of PiVoT, a citation grounding and faithfulness verifier.">
+<meta property="og:image" content="https://haohaha-11.github.io/PiVoT/pivot-demo-poster.jpg">
+<meta property="og:type" content="video.other">
+<style>
+  :root { --bg: #F7F6F2; --ink: #1F2328; --muted: #57606A; --card: #FFFFFF; --line: #D0D7DE; --teal: #0E9F8A; --teal-ink: #FFFFFF; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141313; --ink: #E6E3DD; --muted: #A9A59C; --card: #1D1C1B; --line: #34312E; --teal: #12B39B; --teal-ink: #0B1513; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif; }
+  main { max-width: 1080px; margin: 0 auto; padding: 28px 16px 56px; }
+  .banner { display: block; width: 100%; height: auto; border-radius: 14px; }
+  h1 { margin: 28px 0 4px; font-size: clamp(24px, 3.6vw, 38px); line-height: 1.2; letter-spacing: -0.3px; text-align: center; }
+  .sub { margin: 0 0 26px; color: var(--muted); font-size: clamp(16px, 2vw, 20px); text-align: center; }
+  video { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; background: #000; border-radius: 14px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+  .cap { margin: 12px 0 26px; color: var(--muted); font-size: 15px; text-align: center; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 0 0 28px; padding: 0; list-style: none; }
+  .facts li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .facts b { display: block; font-size: 19px; margin-bottom: 4px; }
+  .facts span { color: var(--muted); font-size: 15px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .links a { text-decoration: none; color: var(--ink); border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 9px 18px; font-size: 15px; font-weight: 600; }
+  .links a.primary { background: var(--teal); border-color: var(--teal); color: var(--teal-ink); }
+  .links a:hover { border-color: var(--teal); }
+</style>
+</head>
+<body>
+<main>
+  <img class="banner" src="pivot-logo-banner.png" width="2354" height="428" alt="PiVoT: Point, don't paraphrase.">
+  <h1>When Paraphrase Is Easy and Logic Is Not</h1>
+  <p class="sub">A Reasoning-Stratified Benchmark and Pointer-Based Verifier for Citation Grounding</p>
+
+  <video controls playsinline preload="metadata" poster="pivot-demo-poster.jpg">
+    <source src="pivot-demo.mp4" type="video/mp4">
+    Your browser cannot play this video. <a href="pivot-demo.mp4">Download it</a>.
+  </video>
+  <p class="cap">2:20 · narrated, with captions · Dot, the PiVoT cat, points at what the narration describes.</p>
+
+  <ul class="facts">
+    <li><b>Verbatim by construction</b><span>The model points at sentence IDs. Code slices every quote from the passage, with character offsets.</span></li>
+    <li><b>0.953 · 0.979 accuracy</b><span>PiVoT v3 on two frozen test sets. The baseline that thinks on every claim scores 0.959 · 0.952.</span></li>
+    <li><b>31–40% of the tokens</b><span>Thinking is spent only on the claims that code rules flag as hard.</span></li>
+  </ul>
+
+  <nav class="links">
+    <a class="primary" href="https://github.com/Haohaha-11/PiVoT">Code, data and full report on GitHub</a>
+    <a href="https://github.com/Haohaha-11/PiVoT#-results-at-a-glance">Results</a>
+    <a href="https://github.com/Haohaha-11/PiVoT#-reproduce">Reproduce</a>
+    <a href="pivot-demo.mp4" download>Download the video (20.6 MB)</a>
+  </nav>
+</main>
+</body>
+</html>
