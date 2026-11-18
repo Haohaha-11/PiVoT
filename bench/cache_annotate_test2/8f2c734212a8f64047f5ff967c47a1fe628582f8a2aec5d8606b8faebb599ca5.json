@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c1\", \"label\": \"S\", \"reason\": \"Passage [0] says the primary freshness mechanism is an origin-assigned explicit expiration time using Expires or max-age.\"}]}", "prompt_tokens": 2774, "completion_tokens": 197, "latency_ms": 7255, "cached": false}

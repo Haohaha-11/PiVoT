@@ -1,0 +1,1 @@
+{"text": "{\"claims\": [{\"id\": \"c1\", \"evidence\": [{\"sid\": \"P0.S2\", \"rel\": \"refutes\"}], \"check\": null, \"reasoning\": \"P0.S2 sets the threshold at about 100 megabytes, not 10 megabytes, so the claim's figure contradicts the passage.\"}]}", "prompt_tokens": 1049, "completion_tokens": 262, "latency_ms": 4759, "cached": false}

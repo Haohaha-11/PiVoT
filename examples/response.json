@@ -1,0 +1,70 @@
+{
+  "claims": [
+    {
+      "claim_text": "The default page size is 8192 bytes.",
+      "verdict": "CONTRADICTED",
+      "reasoning": "Passage states the default page size is 4096 bytes, incompatible with the claimed 8192 bytes.",
+      "citations": [
+        {
+          "index": 0,
+          "quote": "The default page size is 4096 bytes.",
+          "start_char": 48,
+          "end_char": 84
+        }
+      ],
+      "answer_span": [
+        0,
+        35
+      ]
+    },
+    {
+      "claim_text": "Checkpoints run every 1000 pages.",
+      "verdict": "SUPPORTED",
+      "reasoning": "Direct restatement of P1.S0.",
+      "citations": [
+        {
+          "index": 1,
+          "quote": "Checkpoints run every 1000 pages.",
+          "start_char": 0,
+          "end_char": 33
+        }
+      ],
+      "answer_span": [
+        41,
+        73
+      ]
+    },
+    {
+      "claim_text": "WAL is always faster than a rollback journal.",
+      "verdict": "UNSUPPORTED",
+      "reasoning": "Passages never compare WAL speed to rollback journal.",
+      "citations": [],
+      "answer_span": [
+        75,
+        119
+      ]
+    }
+  ],
+  "meta": {
+    "pipeline": "pivot",
+    "prompt_version": "pivot-v4",
+    "status": "ok",
+    "llm_calls": 2,
+    "prompt_tokens": 1558,
+    "completion_tokens": 337,
+    "latency_ms": 6933,
+    "llm_latency_ms": 6925,
+    "cached_llm_calls": 0,
+    "escalated_claims": 1,
+    "escalation_reasons": {
+      "number_not_in_evidence": 1
+    },
+    "resplit_claims": 0,
+    "mixed_evidence": 0,
+    "dropped_pointers": 0,
+    "computed_checks": 0,
+    "check_conflicts": 0,
+    "parse_repairs": [],
+    "warnings": []
+  }
+}

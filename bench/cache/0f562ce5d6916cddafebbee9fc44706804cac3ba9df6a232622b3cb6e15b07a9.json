@@ -1,0 +1,1 @@
+{"text": "{\"claims\": [{\"id\": \"c0\", \"evidence\": [{\"sid\": \"P0.S1\", \"rel\": \"entails\"}], \"check\": null, \"reasoning\": \"P0.S1 states that beginning with version 3.7.0, the WAL option is available, which directly supports the claim.\"}]}", "prompt_tokens": 1045, "completion_tokens": 206, "latency_ms": 2554, "cached": false}

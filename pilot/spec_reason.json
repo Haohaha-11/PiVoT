@@ -1,0 +1,1657 @@
+{
+ "_doc": "Reasoning-focused cases. 'p' indexes this case's passages list.",
+ "_guideline": "SUPPORTED: every part entailed; allowed inference = paraphrase, counting, simple arithmetic, combining passages, version-range containment. CONTRADICTED: if the passages are true the claim must be false (wrong number/version/name for the same thing, negation, reversed comparison, always/never refuted by a stated exception). UNSUPPORTED: neither entailed nor incompatible (extrinsic facts even if true, attribute not stated for that entity, converse of an only-if, added specificity). Modality/quantifier: weakening (always->can, all->some) is SUPPORTED; strengthening (typical->required, can->always) is UNSUPPORTED unless a stated exception refutes it (then CONTRADICTED). Logic: contrapositive is SUPPORTED; converse of an only-if is UNSUPPORTED, or CONTRADICTED when another passage gives a counterexample. Invalid transitive comparisons are UNSUPPORTED.",
+ "sources": {
+  "sqlite": "sqlite_wal.json",
+  "redis": "redis_persistence.json",
+  "pg": "pg_vacuum.json"
+ },
+ "cases": [
+  {
+   "id": "reason-01-pg-xid-arithmetic",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "pg:21",
+    "pg:22",
+    "pg:29",
+    "pg:30",
+    "pg:31",
+    "pg:32",
+    "pg:37",
+    "pg:38",
+    "pg:39"
+   ],
+   "answer": "Because transaction IDs are only 32 bits wide, the XID space holds about 4 billion values, and every normal XID has roughly two billion older and two billion newer XIDs. That is why every table must be vacuumed at least once every two billion transactions; running past that without vacuuming means permanent, unrecoverable data loss. With the default autovacuum_freeze_max_age of 200 million transactions, the anti-wraparound autovacuum kicks in after only about 10% of that two-billion window. The effective maximum for vacuum_freeze_table_age is 95% of autovacuum_freeze_max_age, so with the default it can be at most 180 million. If autovacuum still fails, warnings start when the oldest XIDs are forty million transactions from wraparound and new XIDs are refused once fewer than three million remain, leaving a 37-million-transaction window between the first warning and the hard stop. Once XID assignment stops, no new transactions of any kind can be started.",
+   "claims": [
+    {
+     "text": "PostgreSQL transaction IDs are 32 bits wide.",
+     "anchor": "transaction IDs are only 32 bits wide",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "since transaction IDs have limited size (32 bits)"
+      }
+     ]
+    },
+    {
+     "text": "The 32-bit XID space holds about 4 billion values.",
+     "anchor": "the XID space holds about 4 billion values",
+     "verdict": "SUPPORTED",
+     "type": "arithmetic",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "since transaction IDs have limited size (32 bits)"
+      },
+      {
+       "p": 0,
+       "quote": "a cluster that runs for a long time (more than 4 billion transactions) would suffer transaction ID wraparound"
+      }
+     ],
+     "note": "2^32 is about 4.3 billion."
+    },
+    {
+     "text": "Every normal XID has about two billion older and two billion newer XIDs.",
+     "anchor": "every normal XID has roughly two billion older and two billion newer XIDs",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "for every normal XID, there are two billion XIDs that are “older” and two billion that are “newer”"
+      }
+     ]
+    },
+    {
+     "text": "Every table must be vacuumed at least once every two billion transactions.",
+     "anchor": "every table must be vacuumed at least once every two billion transactions",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "it is necessary to vacuum every table in every database at least once every two billion transactions."
+      }
+     ]
+    },
+    {
+     "text": "Running past the wraparound limit without vacuuming causes permanent, unrecoverable data loss.",
+     "anchor": "running past that without vacuuming means permanent, unrecoverable data loss",
+     "verdict": "CONTRADICTED",
+     "type": "exception_ignored",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "(Actually the data is still there, but that's cold comfort if you cannot get at it.)"
+      }
+     ],
+     "note": "The docs say the data is still there, just invisible.",
+     "contestable": true
+    },
+    {
+     "text": "With the default autovacuum_freeze_max_age of 200 million, the anti-wraparound autovacuum kicks in after about 10% of the two-billion window.",
+     "anchor": "the anti-wraparound autovacuum kicks in after only about 10% of that two-billion window",
+     "verdict": "SUPPORTED",
+     "type": "arithmetic_multi_hop",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "(The default, 200 million transactions, translates to about 50MB of pg_xact storage and about 2GB of pg_commit_ts storage.)"
+      },
+      {
+       "p": 0,
+       "quote": "at least once every two billion transactions."
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "200M / 2B = 10%."
+    },
+    {
+     "text": "With the default autovacuum_freeze_max_age, vacuum_freeze_table_age can be at most 180 million.",
+     "anchor": "so with the default it can be at most 180 million",
+     "verdict": "CONTRADICTED",
+     "type": "arithmetic_error",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "The effective maximum for vacuum_freeze_table_age is 0.95 * autovacuum_freeze_max_age"
+      },
+      {
+       "p": 5,
+       "quote": "(The default, 200 million transactions, translates to about 50MB of pg_xact storage and about 2GB of pg_commit_ts storage.)"
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "0.95 * 200M = 190M."
+    },
+    {
+     "text": "There are 37 million transactions between the first wraparound warning and the point where new XIDs are refused.",
+     "anchor": "leaving a 37-million-transaction window between the first warning and the hard stop",
+     "verdict": "SUPPORTED",
+     "type": "arithmetic_multi_hop",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "when the database's oldest XIDs reach forty million transactions from the wraparound point"
+      },
+      {
+       "p": 7,
+       "quote": "the system will refuse to assign new XIDs once there are fewer than three million transactions left until wraparound"
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "40M - 3M = 37M."
+    },
+    {
+     "text": "Once XID assignment stops, no new transactions of any kind can be started.",
+     "anchor": "Once XID assignment stops, no new transactions of any kind can be started.",
+     "verdict": "CONTRADICTED",
+     "type": "exception_ignored",
+     "evidence": [
+      {
+       "p": 8,
+       "quote": "In this condition any transactions already in progress can continue, but only read-only transactions can be started."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-02-pg-autovacuum-logic",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "pg:29",
+    "pg:54",
+    "pg:55",
+    "pg:56",
+    "pg:57",
+    "pg:61",
+    "pg:64",
+    "pg:17",
+    "pg:18"
+   ],
+   "answer": "Autovacuum relies on the statistics collection facility, so if track_counts is off, autovacuum cannot be used; turning track_counts on is by itself enough for autovacuum to work. Even when autovacuum is disabled, PostgreSQL still invokes it on tables that might contain unfrozen rows with XIDs older than autovacuum_freeze_max_age. The launcher tries to start one worker per database every autovacuum_naptime seconds, so with 4 databases and autovacuum_naptime set to 60 seconds, a new worker starts about every 15 seconds. Each database gets at most one worker at a time, and running workers count against max_connections. Autovacuum processes partitions like ordinary tables, but it does not run ANALYZE on partitioned tables, and it does not issue ANALYZE for foreign tables either. Normally a conflicting lock request interrupts autovacuum, and the same is true for an autovacuum that is running to prevent transaction ID wraparound.",
+   "claims": [
+    {
+     "text": "If track_counts is off, autovacuum cannot be used.",
+     "anchor": "if track_counts is off, autovacuum cannot be used",
+     "verdict": "SUPPORTED",
+     "type": "contrapositive",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "autovacuum cannot be used unless track_counts is set to true."
+      }
+     ]
+    },
+    {
+     "text": "Turning track_counts on is by itself enough for autovacuum to work.",
+     "anchor": "turning track_counts on is by itself enough for autovacuum to work",
+     "verdict": "UNSUPPORTED",
+     "type": "converse_of_only_if",
+     "evidence": [],
+     "note": "track_counts is necessary, not stated to be sufficient."
+    },
+    {
+     "text": "Even when autovacuum is disabled, PostgreSQL still invokes it on tables that might contain unfrozen rows with XIDs older than autovacuum_freeze_max_age.",
+     "anchor": "Even when autovacuum is disabled, PostgreSQL still invokes it on tables that might contain unfrozen rows with XIDs older than autovacuum_freeze_max_age",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "(This will happen even if autovacuum is disabled.)"
+      }
+     ]
+    },
+    {
+     "text": "With 4 databases and autovacuum_naptime set to 60 seconds, a new autovacuum worker starts about every 15 seconds.",
+     "anchor": "with 4 databases and autovacuum_naptime set to 60 seconds, a new worker starts about every 15 seconds",
+     "verdict": "SUPPORTED",
+     "type": "arithmetic",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "(Therefore, if the installation has N databases, a new worker will be launched every autovacuum_naptime/N seconds.)"
+      }
+     ],
+     "note": "60 / 4 = 15."
+    },
+    {
+     "text": "Each database gets at most one autovacuum worker at a time.",
+     "anchor": "Each database gets at most one worker at a time",
+     "verdict": "CONTRADICTED",
+     "type": "quantifier_change",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "There is no limit on how many workers might be in a single database"
+      }
+     ]
+    },
+    {
+     "text": "Running autovacuum workers count against max_connections.",
+     "anchor": "running workers count against max_connections",
+     "verdict": "CONTRADICTED",
+     "type": "negation_flip",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "Note that the number of running workers does not count towards max_connections or superuser_reserved_connections limits."
+      }
+     ]
+    },
+    {
+     "text": "Autovacuum processes table partitions like ordinary tables.",
+     "anchor": "Autovacuum processes partitions like ordinary tables",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "(Autovacuum does process table partitions just like other tables.)"
+      }
+     ]
+    },
+    {
+     "text": "Autovacuum does not run ANALYZE on partitioned tables.",
+     "anchor": "it does not run ANALYZE on partitioned tables",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "this means that autovacuum does not run ANALYZE on partitioned tables"
+      },
+      {
+       "p": 8,
+       "quote": "The autovacuum daemon does not issue ANALYZE commands for partitioned tables."
+      }
+     ]
+    },
+    {
+     "text": "Autovacuum does not issue ANALYZE for foreign tables.",
+     "anchor": "it does not issue ANALYZE for foreign tables either",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "The autovacuum daemon does not issue ANALYZE commands for foreign tables"
+      }
+     ]
+    },
+    {
+     "text": "An autovacuum running to prevent transaction ID wraparound is interrupted by a conflicting lock request, just like a normal autovacuum.",
+     "anchor": "the same is true for an autovacuum that is running to prevent transaction ID wraparound",
+     "verdict": "CONTRADICTED",
+     "type": "exception_ignored",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "the autovacuum is not automatically interrupted."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-03-pg-vacuum-full",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "pg:1",
+    "pg:3",
+    "pg:4",
+    "pg:5",
+    "pg:6",
+    "pg:7",
+    "pg:8",
+    "pg:9"
+   ],
+   "answer": "Standard VACUUM can run alongside normal SELECT, INSERT, UPDATE and DELETE traffic, while VACUUM FULL needs an ACCESS EXCLUSIVE lock on the table; VACUUM FULL is also the faster of the two because it compacts the table in a single pass. Standard VACUUM never returns space to the operating system. VACUUM FULL, CLUSTER and the table-rewriting forms of ALTER TABLE all temporarily need extra disk space roughly equal to the size of the table, so rewriting a 50 GB table needs about another 50 GB free. Since the autovacuum daemon never issues VACUUM FULL, a VACUUM FULL that shows up in your logs was not started by autovacuum. For a table whose entire contents are deleted periodically, TRUNCATE avoids the need for a follow-up VACUUM, at the cost of violating strict MVCC semantics. Installations with extremely high update rates may vacuum their busiest tables as often as every few minutes, and anyone not using autovacuum is required to run a database-wide VACUUM once a day.",
+   "claims": [
+    {
+     "text": "Standard VACUUM can run alongside normal SELECT, INSERT, UPDATE and DELETE operations.",
+     "anchor": "Standard VACUUM can run alongside normal SELECT, INSERT, UPDATE and DELETE traffic",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "the standard form of VACUUM can run in parallel with production database operations."
+      }
+     ]
+    },
+    {
+     "text": "VACUUM FULL requires an ACCESS EXCLUSIVE lock on the table.",
+     "anchor": "VACUUM FULL needs an ACCESS EXCLUSIVE lock on the table",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "VACUUM FULL requires an ACCESS EXCLUSIVE lock on the table it is working on"
+      }
+     ]
+    },
+    {
+     "text": "VACUUM FULL is faster than standard VACUUM.",
+     "anchor": "VACUUM FULL is also the faster of the two",
+     "verdict": "CONTRADICTED",
+     "type": "reversed_comparison",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "VACUUM FULL can reclaim more disk space but runs much more slowly."
+      }
+     ]
+    },
+    {
+     "text": "Standard VACUUM never returns space to the operating system.",
+     "anchor": "Standard VACUUM never returns space to the operating system.",
+     "verdict": "CONTRADICTED",
+     "type": "exception_ignored",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "However, it will not return the space to the operating system, except in the special case where one or more pages at the end of a table become entirely free and an exclusive table lock can be easily obtained."
+      }
+     ]
+    },
+    {
+     "text": "VACUUM FULL, CLUSTER and table-rewriting ALTER TABLE temporarily need extra disk space roughly equal to the size of the table.",
+     "anchor": "VACUUM FULL, CLUSTER and the table-rewriting forms of ALTER TABLE all temporarily need extra disk space roughly equal to the size of the table",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "Note that they also temporarily use extra disk space approximately equal to the size of the table"
+      }
+     ]
+    },
+    {
+     "text": "Rewriting a 50 GB table this way needs about another 50 GB of free disk space.",
+     "anchor": "rewriting a 50 GB table needs about another 50 GB free",
+     "verdict": "SUPPORTED",
+     "type": "instantiation",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "Note that they also temporarily use extra disk space approximately equal to the size of the table"
+      }
+     ]
+    },
+    {
+     "text": "A VACUUM FULL that shows up in the logs was not started by autovacuum.",
+     "anchor": "a VACUUM FULL that shows up in your logs was not started by autovacuum",
+     "verdict": "SUPPORTED",
+     "type": "contrapositive",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "and in fact will never issue VACUUM FULL."
+      }
+     ]
+    },
+    {
+     "text": "For a table whose entire contents are deleted periodically, TRUNCATE avoids the need for a follow-up VACUUM.",
+     "anchor": "TRUNCATE avoids the need for a follow-up VACUUM",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "TRUNCATE removes the entire content of the table immediately, without requiring a subsequent VACUUM or VACUUM FULL to reclaim the now-unused disk space."
+      }
+     ]
+    },
+    {
+     "text": "TRUNCATE violates strict MVCC semantics.",
+     "anchor": "at the cost of violating strict MVCC semantics",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "The disadvantage is that strict MVCC semantics are violated."
+      }
+     ]
+    },
+    {
+     "text": "Installations with extremely high update rates may vacuum their busiest tables as often as every few minutes.",
+     "anchor": "Installations with extremely high update rates may vacuum their busiest tables as often as every few minutes",
+     "verdict": "SUPPORTED",
+     "type": "modality_weakening",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "(Some installations with extremely high update rates vacuum their busiest tables as often as once every few minutes.)"
+      }
+     ]
+    },
+    {
+     "text": "Anyone not using autovacuum is required to run a database-wide VACUUM once a day.",
+     "anchor": "anyone not using autovacuum is required to run a database-wide VACUUM once a day",
+     "verdict": "UNSUPPORTED",
+     "type": "modality_strengthening",
+     "evidence": [],
+     "note": "Docs call it 'a typical approach', not a requirement."
+    }
+   ]
+  },
+  {
+   "id": "reason-04-pg-freezing-storage",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "pg:23",
+    "pg:24",
+    "pg:32",
+    "pg:25",
+    "pg:33",
+    "pg:45",
+    "pg:48",
+    "pg:53"
+   ],
+   "answer": "Before PostgreSQL 9.4, freezing replaced a row's insertion XID with FrozenTransactionId, so on a cluster still running 9.3 frozen rows show up with an xmin of 2. Newer versions only set a flag bit, mainly to reduce WAL volume, and keep the original xmin, so a cluster that was pg_upgrade'd from 9.3 can never contain rows with xmin 2. System catalogs can also contain rows with xmin 1, BootstrapTransactionId, which is treated as older than every normal XID. pg_xact stores two bits of commit status per transaction, so the default horizon of 200 million transactions costs about 50MB, and raising autovacuum_freeze_max_age to its two-billion maximum would grow pg_xact to roughly 2GB. Multixact member storage can grow to about 20GB before wraparound, and aggressive vacuums start running more often once it passes about half of that. XID exhaustion and MXID exhaustion both block all write transactions.",
+   "claims": [
+    {
+     "text": "Before PostgreSQL 9.4, freezing replaced a row's insertion XID with FrozenTransactionId.",
+     "anchor": "Before PostgreSQL 9.4, freezing replaced a row's insertion XID with FrozenTransactionId",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "In PostgreSQL versions before 9.4, freezing was implemented by actually replacing a row's insertion XID with FrozenTransactionId, which was visible in the row's xmin system column."
+      }
+     ]
+    },
+    {
+     "text": "On a cluster running PostgreSQL 9.3, frozen rows show up with an xmin of 2.",
+     "anchor": "on a cluster still running 9.3 frozen rows show up with an xmin of 2",
+     "verdict": "SUPPORTED",
+     "type": "version_range_entailed",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "In PostgreSQL versions before 9.4, freezing was implemented by actually replacing a row's insertion XID with FrozenTransactionId, which was visible in the row's xmin system column."
+      },
+      {
+       "p": 0,
+       "quote": "FrozenTransactionId (2)"
+      }
+     ],
+     "evidence_mode": "all"
+    },
+    {
+     "text": "Newer PostgreSQL versions switched to a flag bit for freezing mainly to reduce WAL volume.",
+     "anchor": "mainly to reduce WAL volume",
+     "verdict": "UNSUPPORTED",
+     "type": "reason_substitution",
+     "evidence": [],
+     "note": "The stated benefit is preserving xmin for forensic use; WAL volume is not mentioned."
+    },
+    {
+     "text": "Newer PostgreSQL versions freeze rows by setting a flag bit and keep the original xmin.",
+     "anchor": "Newer versions only set a flag bit",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "Newer versions just set a flag bit, preserving the row's original xmin for possible forensic use."
+      }
+     ]
+    },
+    {
+     "text": "A cluster that was pg_upgrade'd from 9.3 can never contain rows with xmin equal to 2.",
+     "anchor": "a cluster that was pg_upgrade'd from 9.3 can never contain rows with xmin 2",
+     "verdict": "CONTRADICTED",
+     "type": "exception_ignored",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "However, rows with xmin equal to FrozenTransactionId (2) may still be found in databases pg_upgrade'd from pre-9.4 versions."
+      }
+     ]
+    },
+    {
+     "text": "System catalogs can contain rows with xmin equal to 1, BootstrapTransactionId.",
+     "anchor": "System catalogs can also contain rows with xmin 1, BootstrapTransactionId",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "Also, system catalogs may contain rows with xmin equal to BootstrapTransactionId (1)"
+      }
+     ]
+    },
+    {
+     "text": "BootstrapTransactionId is treated as older than every normal XID.",
+     "anchor": "which is treated as older than every normal XID",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "this special XID is treated as older than every normal XID."
+      }
+     ]
+    },
+    {
+     "text": "pg_xact stores two bits of commit status per transaction.",
+     "anchor": "pg_xact stores two bits of commit status per transaction",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "The commit status uses two bits per transaction"
+      }
+     ]
+    },
+    {
+     "text": "With the default horizon of 200 million transactions, pg_xact takes about 50MB.",
+     "anchor": "the default horizon of 200 million transactions costs about 50MB",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "(The default, 200 million transactions, translates to about 50MB of pg_xact storage and about 2GB of pg_commit_ts storage.)"
+      }
+     ]
+    },
+    {
+     "text": "Raising autovacuum_freeze_max_age to its two-billion maximum would grow pg_xact to roughly 2GB.",
+     "anchor": "raising autovacuum_freeze_max_age to its two-billion maximum would grow pg_xact to roughly 2GB",
+     "verdict": "CONTRADICTED",
+     "type": "near_miss_number",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "if autovacuum_freeze_max_age is set to its maximum allowed value of two billion, pg_xact can be expected to grow to about half a gigabyte"
+      }
+     ],
+     "note": "2GB is the DEFAULT pg_commit_ts size; pg_xact at two billion is about half a gigabyte."
+    },
+    {
+     "text": "Aggressive vacuums start running more often once multixact member storage passes about half of its roughly 20GB wraparound limit.",
+     "anchor": "aggressive vacuums start running more often once it passes about half of that",
+     "verdict": "SUPPORTED",
+     "type": "arithmetic_multi_hop",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "Also, if the storage occupied by multixacts members exceeds about 10GB, aggressive vacuum scans will occur more often for all tables"
+      },
+      {
+       "p": 6,
+       "quote": "The members storage area can grow up to about 20GB before reaching wraparound."
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "10GB is half of 20GB."
+    },
+    {
+     "text": "XID exhaustion and MXID exhaustion both block all write transactions.",
+     "anchor": "XID exhaustion and MXID exhaustion both block all write transactions.",
+     "verdict": "CONTRADICTED",
+     "type": "quantifier_change",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "XID exhaustion will block all write transactions, but MXID exhaustion will only block a subset of write transactions"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-05-sqlite-logic",
+   "categories": [
+    "reasoning",
+    "multi_passage"
+   ],
+   "passages": [
+    "sqlite:1",
+    "sqlite:13",
+    "sqlite:14",
+    "sqlite:45",
+    "sqlite:46",
+    "sqlite:47",
+    "sqlite:18",
+    "sqlite:22"
+   ],
+   "answer": "Because the wal-index lives in shared memory, all processes using a WAL database must be on the same host, so two processes on different machines sharing a database over NFS cannot use WAL. Being on the same host, however, is enough to guarantee that WAL will work. Since there is only one WAL file, two writers can never be writing at the same moment, even though readers can run alongside a writer; this single-writer limit can be lifted with BEGIN CONCURRENT. A process can use WAL without shared memory only if it sets EXCLUSIVE locking mode before its first WAL access, and in that case it stays in EXCLUSIVE mode until it leaves WAL journal mode. With PRAGMA synchronous=NORMAL, commits skip the WAL sync and the checkpoint is the only operation that issues a sync; with FULL, every commit syncs the WAL. Running the checkpoint in a separate thread therefore guarantees that the main thread never blocks on a sync, whatever the synchronous setting.",
+   "claims": [
+    {
+     "text": "All processes using a WAL database must be on the same host.",
+     "anchor": "all processes using a WAL database must be on the same host",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "All processes using a database must be on the same host computer; WAL does not work over a network filesystem."
+      }
+     ]
+    },
+    {
+     "text": "Two processes on different machines sharing a database over NFS cannot use WAL.",
+     "anchor": "two processes on different machines sharing a database over NFS cannot use WAL",
+     "verdict": "SUPPORTED",
+     "type": "instantiation",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "All processes using a database must be on the same host computer; WAL does not work over a network filesystem."
+      }
+     ]
+    },
+    {
+     "text": "Being on the same host is enough to guarantee that WAL will work.",
+     "anchor": "Being on the same host, however, is enough to guarantee that WAL will work.",
+     "verdict": "CONTRADICTED",
+     "type": "converse_refuted",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "If the VFS does not support shared-memory methods, then the attempt to open a database that is already in WAL mode, or the attempt to convert a database into WAL mode, will fail."
+      }
+     ],
+     "note": "Necessary condition restated as sufficient; another passage gives a same-host failure case."
+    },
+    {
+     "text": "Two writers can never be writing to a WAL database at the same moment.",
+     "anchor": "two writers can never be writing at the same moment",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "However, since there is only one WAL file, there can only be one writer at a time."
+      }
+     ]
+    },
+    {
+     "text": "In WAL mode, readers can run alongside a writer.",
+     "anchor": "readers can run alongside a writer",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "writers and readers can run at the same time"
+      }
+     ]
+    },
+    {
+     "text": "SQLite's WAL single-writer limit can be lifted with BEGIN CONCURRENT.",
+     "anchor": "this single-writer limit can be lifted with BEGIN CONCURRENT",
+     "verdict": "UNSUPPORTED",
+     "type": "extrinsic_plausible",
+     "evidence": []
+    },
+    {
+     "text": "A process can use WAL without shared memory only if it sets EXCLUSIVE locking mode before its first WAL access.",
+     "anchor": "A process can use WAL without shared memory only if it sets EXCLUSIVE locking mode before its first WAL access",
+     "verdict": "SUPPORTED",
+     "type": "multi_hop_necessity",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "WAL databases can be created, read, and written even if shared memory is unavailable as long as the locking_mode is set to EXCLUSIVE before the first attempted access."
+      },
+      {
+       "p": 5,
+       "quote": "If NORMAL locking mode is in effect for the first WAL-mode database access, then the shared-memory wal-index is created."
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "Passage 3 gives sufficiency; passage 5 shows NORMAL-first creates the shared-memory index, giving necessity."
+    },
+    {
+     "text": "A process using WAL without shared memory stays in EXCLUSIVE locking mode until it leaves WAL journal mode.",
+     "anchor": "it stays in EXCLUSIVE mode until it leaves WAL journal mode",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "The only way to change out of EXCLUSIVE locking mode is to first change out of WAL journal mode."
+      }
+     ]
+    },
+    {
+     "text": "With PRAGMA synchronous=NORMAL, commits skip the WAL sync.",
+     "anchor": "With PRAGMA synchronous=NORMAL, commits skip the WAL sync",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "(Writers sync the WAL on every transaction commit if PRAGMA synchronous is set to FULL but omit this sync if PRAGMA synchronous is set to NORMAL.)"
+      }
+     ]
+    },
+    {
+     "text": "With PRAGMA synchronous=NORMAL, the checkpoint is the only operation that issues a sync.",
+     "anchor": "the checkpoint is the only operation that issues a sync",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "Note that with PRAGMA synchronous set to NORMAL, the checkpoint is the only operation to issue an I/O barrier or sync operation"
+      }
+     ]
+    },
+    {
+     "text": "With PRAGMA synchronous=FULL, every commit syncs the WAL.",
+     "anchor": "with FULL, every commit syncs the WAL",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "(Writers sync the WAL on every transaction commit if PRAGMA synchronous is set to FULL but omit this sync if PRAGMA synchronous is set to NORMAL.)"
+      }
+     ]
+    },
+    {
+     "text": "Running the checkpoint in a separate thread guarantees the main thread never blocks on a sync, whatever the synchronous setting.",
+     "anchor": "Running the checkpoint in a separate thread therefore guarantees that the main thread never blocks on a sync, whatever the synchronous setting.",
+     "verdict": "CONTRADICTED",
+     "type": "multi_hop_refutation",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "Note that with PRAGMA synchronous set to NORMAL, the checkpoint is the only operation to issue an I/O barrier or sync operation"
+      },
+      {
+       "p": 6,
+       "quote": "(Writers sync the WAL on every transaction commit if PRAGMA synchronous is set to FULL but omit this sync if PRAGMA synchronous is set to NORMAL.)"
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "The guarantee holds only for NORMAL; under FULL the committing thread syncs."
+    }
+   ]
+  },
+  {
+   "id": "reason-06-redis-rewrite-versions",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "redis:3",
+    "redis:4",
+    "redis:5",
+    "redis:15",
+    "redis:17",
+    "redis:19",
+    "redis:20",
+    "redis:34",
+    "redis:35",
+    "redis:36"
+   ],
+   "answer": "If you increment a counter 100 times, the AOF holds 100 entries even though 99 of them are unnecessary, and after a rewrite that key can be rebuilt from a single command. On Redis 2.2 you have to run BGREWRITEAOF yourself, while Redis 2.6 can trigger log rewriting automatically. Redis 2.4 and later never run an AOF rewrite and an RDB snapshot at the same time, and if you request BGREWRITEAOF while a snapshot is running, Redis schedules it and starts it once the snapshot completes. With appendfsync everysec you can lose up to one second of writes, and with appendfsync always no writes are lost in any failure scenario. RDB forks less often than AOF does. When both AOF and RDB are enabled, Redis rebuilds the dataset from the AOF on restart rather than from the RDB file.",
+   "claims": [
+    {
+     "text": "Incrementing a counter 100 times leaves 100 entries in the AOF.",
+     "anchor": "the AOF holds 100 entries",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "but 100 entries in your AOF."
+      }
+     ]
+    },
+    {
+     "text": "99 of those 100 AOF entries are unnecessary for rebuilding the current state.",
+     "anchor": "99 of them are unnecessary",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "99 of those entries are not needed to rebuild the current state."
+      }
+     ]
+    },
+    {
+     "text": "After an AOF rewrite, that counter key can be rebuilt from a single command.",
+     "anchor": "after a rewrite that key can be rebuilt from a single command",
+     "verdict": "SUPPORTED",
+     "type": "light_inference",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "you'll end up with a single key in your dataset containing the final value"
+      },
+      {
+       "p": 4,
+       "quote": "Redis will write the shortest sequence of commands needed to rebuild the current dataset in memory."
+      }
+     ],
+     "evidence_mode": "all",
+     "contestable": true
+    },
+    {
+     "text": "On Redis 2.2 you have to run BGREWRITEAOF yourself.",
+     "anchor": "On Redis 2.2 you have to run BGREWRITEAOF yourself",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "If you're using the AOF with Redis 2.2 you'll need to run `BGREWRITEAOF` from time to time."
+      }
+     ]
+    },
+    {
+     "text": "Redis 2.6 can trigger AOF log rewriting automatically.",
+     "anchor": "Redis 2.6 can trigger log rewriting automatically",
+     "verdict": "SUPPORTED",
+     "type": "version_range_entailed",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "Since Redis 2.4 is able to trigger log rewriting automatically"
+      }
+     ],
+     "note": "2.6 is later than 2.4."
+    },
+    {
+     "text": "Redis 2.4 and later never run an AOF rewrite and an RDB snapshot at the same time.",
+     "anchor": "Redis 2.4 and later never run an AOF rewrite and an RDB snapshot at the same time",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "Redis >= 2.4 makes sure to avoid triggering an AOF rewrite when an RDB snapshotting operation is already in progress, or allowing a `BGSAVE` while the AOF rewrite is in progress."
+      }
+     ]
+    },
+    {
+     "text": "If BGREWRITEAOF is requested during a snapshot, Redis schedules it and starts it once the snapshot completes.",
+     "anchor": "if you request BGREWRITEAOF while a snapshot is running, Redis schedules it and starts it once the snapshot completes",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 8,
+       "quote": "the server will reply with an OK status code telling the user the operation is scheduled, and the rewrite will start once the snapshotting is completed."
+      }
+     ]
+    },
+    {
+     "text": "With appendfsync everysec you can lose up to one second of writes.",
+     "anchor": "With appendfsync everysec you can lose up to one second of writes",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "you may lose 1 second of data if there is a disaster"
+      }
+     ]
+    },
+    {
+     "text": "With appendfsync always, no writes are lost in any failure scenario.",
+     "anchor": "with appendfsync always no writes are lost in any failure scenario",
+     "verdict": "UNSUPPORTED",
+     "type": "modality_strengthening",
+     "evidence": [],
+     "note": "Docs only say 'very safe'."
+    },
+    {
+     "text": "RDB forks less often than AOF does.",
+     "anchor": "RDB forks less often than AOF does.",
+     "verdict": "CONTRADICTED",
+     "type": "reversed_comparison",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "AOF also needs to fork() but less frequently"
+      }
+     ]
+    },
+    {
+     "text": "When both AOF and RDB are enabled, Redis rebuilds the dataset from the AOF on restart rather than from the RDB file.",
+     "anchor": "When both AOF and RDB are enabled, Redis rebuilds the dataset from the AOF on restart rather than from the RDB file.",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 9,
+       "quote": "the AOF file will be used to reconstruct the original dataset since it is guaranteed to be the most complete."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-07-redis-backup-counting",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "redis:39",
+    "redis:3",
+    "redis:4",
+    "redis:11",
+    "redis:19",
+    "redis:46",
+    "redis:47",
+    "redis:38"
+   ],
+   "answer": "A common backup scheme keeps hourly RDB snapshots for the latest 48 hours and daily snapshots for one or two months, which means up to 48 hourly files and as many as about 60 daily files. At least once a day a snapshot should be transferred outside the data center, or at least outside the physical machine. Redis can save the dataset every N seconds if there have been at least M changes, so with a save point of 300 seconds and 100 changes, a crash can never lose more than five minutes of writes. Snapshots sent to S3 should be encrypted, for example with gpg -c, and the password stored in several safe places. If you push backups to a VPS over SCP, verifying the file size after the transfer is enough to guarantee the backup is intact. With appendfsync no, Linux typically flushes data every 30 seconds.",
+   "claims": [
+    {
+     "text": "A common backup scheme keeps hourly RDB snapshots for the latest 48 hours and daily snapshots for one or two months.",
+     "anchor": "A common backup scheme keeps hourly RDB snapshots for the latest 48 hours and daily snapshots for one or two months",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "you can take hourly snapshots for the latest 48 hours, and daily snapshots for one or two months."
+      }
+     ]
+    },
+    {
+     "text": "That scheme keeps up to 48 hourly snapshot files.",
+     "anchor": "up to 48 hourly files",
+     "verdict": "SUPPORTED",
+     "type": "arithmetic",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "you can take hourly snapshots for the latest 48 hours"
+      }
+     ]
+    },
+    {
+     "text": "That scheme keeps as many as about 60 daily snapshot files.",
+     "anchor": "as many as about 60 daily files",
+     "verdict": "SUPPORTED",
+     "type": "arithmetic",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "and daily snapshots for one or two months."
+      }
+     ],
+     "note": "Two months is about 60 days."
+    },
+    {
+     "text": "At least once a day, a snapshot should be transferred outside the data center or at least outside the physical machine.",
+     "anchor": "At least once a day a snapshot should be transferred outside the data center, or at least outside the physical machine",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "At least one time every day make sure to transfer an RDB snapshot *outside your data center* or at least *outside the physical machine* running your Redis instance."
+      }
+     ]
+    },
+    {
+     "text": "Redis can save the dataset every N seconds if there have been at least M changes.",
+     "anchor": "Redis can save the dataset every N seconds if there have been at least M changes",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "You can configure Redis to have it save the dataset every N seconds if there are at least M changes in the dataset"
+      }
+     ]
+    },
+    {
+     "text": "With a save point of 300 seconds and 100 changes, a crash can never lose more than five minutes of writes.",
+     "anchor": "with a save point of 300 seconds and 100 changes, a crash can never lose more than five minutes of writes",
+     "verdict": "CONTRADICTED",
+     "type": "condition_reasoning",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "You can configure Redis to have it save the dataset every N seconds if there are at least M changes in the dataset"
+      }
+     ],
+     "note": "If fewer than 100 changes accumulate, no snapshot is taken, so the loss window can exceed five minutes.",
+     "contestable": true
+    },
+    {
+     "text": "Snapshots sent to S3 should be encrypted, for example with gpg -c.",
+     "anchor": "Snapshots sent to S3 should be encrypted, for example with gpg -c",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "You can encrypt your data using `gpg -c` (in symmetric encryption mode)."
+      }
+     ]
+    },
+    {
+     "text": "The backup encryption password should be stored in several safe places.",
+     "anchor": "the password stored in several safe places",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "Make sure to store your password in many different safe places"
+      }
+     ]
+    },
+    {
+     "text": "Verifying the file size after an SCP transfer to a VPS is enough to guarantee the backup is intact.",
+     "anchor": "verifying the file size after the transfer is enough to guarantee the backup is intact",
+     "verdict": "UNSUPPORTED",
+     "type": "sufficiency_overclaim",
+     "evidence": [],
+     "note": "Docs recommend checking the size and possibly the SHA1 digest; they never say size alone is sufficient.",
+     "contestable": true
+    },
+    {
+     "text": "With appendfsync no, Linux typically flushes data every 30 seconds.",
+     "anchor": "With appendfsync no, Linux typically flushes data every 30 seconds.",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "Normally Linux will flush data every 30 seconds with this configuration"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-08-sqlite-bug-timeline",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "sqlite:54",
+    "sqlite:55",
+    "sqlite:56",
+    "sqlite:57",
+    "sqlite:63",
+    "sqlite:64",
+    "sqlite:65"
+   ],
+   "answer": "The WAL-reset bug was found on 2026-03-03, and the fixed release, 3.51.3, came out about ten days later. The bug is likely present in releases going back to 3.7.0 from July 2010, so it went unnoticed for more than fifteen years. SQLite 3.51.2, released in January 2026, is likely affected, and the backports to 3.44.6 and 3.50.7 shipped on the same day as 3.51.3. A single-threaded application that only ever opens one connection cannot hit the bug. Because the developers could only trigger it with a special test hook, the bug has never been reproduced without modified SQLite sources. Its observed rate in the wild is no higher than the expected rate of SSD malfunctions, so unless you are doing something really unusual you are unlikely to ever encounter it.",
+   "claims": [
+    {
+     "text": "The WAL-reset bug was found on 2026-03-03.",
+     "anchor": "The WAL-reset bug was found on 2026-03-03",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "On 2026-03-03, one of the SQLite developers (Dan) found and fixed a bug"
+      }
+     ]
+    },
+    {
+     "text": "The fixed release 3.51.3 came out about ten days after the WAL-reset bug was found.",
+     "anchor": "the fixed release, 3.51.3, came out about ten days later",
+     "verdict": "SUPPORTED",
+     "type": "temporal_arithmetic",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "On 2026-03-03, one of the SQLite developers (Dan) found and fixed a bug"
+      },
+      {
+       "p": 1,
+       "quote": "It is fixed in version 3.51.3 (2026-03-13) and later."
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "2026-03-03 to 2026-03-13."
+    },
+    {
+     "text": "The WAL-reset bug went unnoticed for more than fifteen years.",
+     "anchor": "it went unnoticed for more than fifteen years",
+     "verdict": "SUPPORTED",
+     "type": "temporal_arithmetic",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "The bug is likely present in all version of SQLite from 3.7.0 (2010-07-21) through 3.51.2 (2026-01-09)."
+      },
+      {
+       "p": 0,
+       "quote": "On 2026-03-03, one of the SQLite developers (Dan) found and fixed a bug"
+      }
+     ],
+     "evidence_mode": "all",
+     "note": "July 2010 to March 2026 is about 15.6 years."
+    },
+    {
+     "text": "SQLite 3.51.2, released in January 2026, is likely affected by the WAL-reset bug.",
+     "anchor": "SQLite 3.51.2, released in January 2026, is likely affected",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "The bug is likely present in all version of SQLite from 3.7.0 (2010-07-21) through 3.51.2 (2026-01-09)."
+      }
+     ]
+    },
+    {
+     "text": "The backports of the fix to 3.44.6 and 3.50.7 shipped on the same day as 3.51.3.",
+     "anchor": "the backports to 3.44.6 and 3.50.7 shipped on the same day as 3.51.3",
+     "verdict": "UNSUPPORTED",
+     "type": "fabricated_detail",
+     "evidence": [],
+     "note": "Backport release dates are not given."
+    },
+    {
+     "text": "A single-threaded application that only ever opens one connection cannot hit the WAL-reset bug.",
+     "anchor": "A single-threaded application that only ever opens one connection cannot hit the bug.",
+     "verdict": "SUPPORTED",
+     "type": "contrapositive",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "The bug only affects databases in WAL mode when there are two or more database connections open on the same file, in separate threads or processes"
+      }
+     ]
+    },
+    {
+     "text": "The WAL-reset bug has never been reproduced without modified SQLite sources.",
+     "anchor": "the bug has never been reproduced without modified SQLite sources",
+     "verdict": "CONTRADICTED",
+     "type": "temporal_update",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "Phil Eaton has devised a reproducer that does not involve using the special testing code hack."
+      }
+     ],
+     "note": "Passage 4 says it was never observed without the hack; the later UPDATE (passage 5) supersedes it."
+    },
+    {
+     "text": "The WAL-reset bug's observed rate in the wild is no higher than the expected rate of SSD malfunctions.",
+     "anchor": "Its observed rate in the wild is no higher than the expected rate of SSD malfunctions",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "the occurrence rate of this problem in the wild appears to be less than or equal to the expected occurrence rate of SSD malfunctions and/or cosmic-ray hits."
+      }
+     ]
+    },
+    {
+     "text": "Unless you are doing something really unusual, you are unlikely to ever encounter the WAL-reset bug.",
+     "anchor": "unless you are doing something really unusual you are unlikely to ever encounter it",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "unless you are doing something really unusual, you are unlikely to ever encounter this problem."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-09-redis-aof-corruption",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "redis:14",
+    "redis:16",
+    "redis:18",
+    "redis:21",
+    "redis:22",
+    "redis:23",
+    "redis:24",
+    "redis:25",
+    "redis:26"
+   ],
+   "answer": "Since Redis 7.0.0 the AOF is split into at most one base file and any number of incremental files, all tracked by a manifest file that is written in JSON. During a rewrite the parent keeps writing to a newly opened incremental file, so if the rewrite fails, the old base and incremental files plus that new incremental file still represent the complete dataset. Failed rewrites are retried at a slower and slower rate. The rewrite produces a new AOF with the minimal set of operations needed to recreate the current dataset. If the AOF is merely truncated at the end, Redis loads it by default and discards the malformed last command; if it is corrupted in the middle, Redis likewise discards just the bad command and keeps going. Running redis-check-aof with --fix is always safe, because it only removes the invalid command.",
+   "claims": [
+    {
+     "text": "Since Redis 7.0.0, the AOF consists of at most one base file plus any number of incremental files.",
+     "anchor": "Since Redis 7.0.0 the AOF is split into at most one base file and any number of incremental files",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "the original single AOF file is split into base file (at most one) and incremental files (there may be more than one)."
+      }
+     ]
+    },
+    {
+     "text": "The AOF base and incremental files are tracked by a manifest file.",
+     "anchor": "all tracked by a manifest file",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "All these files are put in a separate directory and are tracked by a manifest file."
+      }
+     ]
+    },
+    {
+     "text": "The Redis AOF manifest file is written in JSON.",
+     "anchor": "that is written in JSON",
+     "verdict": "UNSUPPORTED",
+     "type": "fabricated_detail",
+     "evidence": []
+    },
+    {
+     "text": "During an AOF rewrite, the parent keeps writing to a newly opened incremental file.",
+     "anchor": "During a rewrite the parent keeps writing to a newly opened incremental file",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "the Redis parent process opens a new incremental AOF file to continue writing."
+      }
+     ]
+    },
+    {
+     "text": "If the rewrite fails, the old base and incremental files plus the newly opened incremental file still represent the complete dataset.",
+     "anchor": "if the rewrite fails, the old base and incremental files plus that new incremental file still represent the complete dataset",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "If the rewriting fails, the old base and increment files (if there are any) plus this newly opened increment file represent the complete updated dataset, so we are safe."
+      }
+     ]
+    },
+    {
+     "text": "Failed AOF rewrites are retried at a slower and slower rate.",
+     "anchor": "Failed rewrites are retried at a slower and slower rate.",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "failed AOF rewrites are retried at a slower and slower rate."
+      }
+     ]
+    },
+    {
+     "text": "The AOF rewrite produces a new file with the minimal set of operations needed to recreate the current dataset.",
+     "anchor": "The rewrite produces a new AOF with the minimal set of operations needed to recreate the current dataset.",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "a completely new one is produced with the minimal set of operations needed to create the current data set"
+      }
+     ]
+    },
+    {
+     "text": "If the AOF is only truncated at the end, Redis loads it by default and discards the malformed last command.",
+     "anchor": "If the AOF is merely truncated at the end, Redis loads it by default and discards the malformed last command",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "The latest major versions of Redis will be able to load the AOF anyway, just discarding the last non well formed command in the file."
+      }
+     ]
+    },
+    {
+     "text": "If the AOF is corrupted in the middle, Redis discards just the bad command and keeps going.",
+     "anchor": "if it is corrupted in the middle, Redis likewise discards just the bad command and keeps going",
+     "verdict": "CONTRADICTED",
+     "type": "case_confusion",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "Redis will complain at startup and will abort:"
+      }
+     ]
+    },
+    {
+     "text": "Running redis-check-aof with --fix is always safe because it only removes the invalid command.",
+     "anchor": "Running redis-check-aof with --fix is always safe, because it only removes the invalid command.",
+     "verdict": "CONTRADICTED",
+     "type": "exception_ignored",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "but in that case all the AOF portion from the invalid part to the end of the file may be discarded, leading to a massive amount of data loss if the corruption happened to be in the initial part of the file."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-10-pg-analyze-scope",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "pg:10",
+    "pg:11",
+    "pg:12",
+    "pg:13",
+    "pg:14",
+    "pg:17",
+    "pg:18",
+    "pg:61"
+   ],
+   "answer": "ANALYZE gathers the statistics the query planner relies on, and it can run on its own or as an optional step in VACUUM. Because ANALYZE samples rows randomly instead of reading every row, it is usually best to just analyze the whole database; by default it samples 30,000 rows per table. The autovacuum daemon schedules ANALYZE purely as a function of the number of rows inserted or updated, so it may skip a table whose statistical distribution changed meaningfully if only a few rows were touched. Changes to partitions or inheritance children do not trigger autoanalyze on the parent table, so an inheritance parent is never analyzed by autovacuum, and autovacuum runs ANALYZE on a partitioned table only after its partitions change significantly. A timestamp column that records each row's update time will probably need more frequent statistics updates than a column of URLs.",
+   "claims": [
+    {
+     "text": "ANALYZE gathers the statistics the PostgreSQL query planner relies on.",
+     "anchor": "ANALYZE gathers the statistics the query planner relies on",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "These statistics are gathered by the ANALYZE command, which can be invoked by itself or as an optional step in VACUUM."
+      }
+     ]
+    },
+    {
+     "text": "ANALYZE can run on its own or as an optional step in VACUUM.",
+     "anchor": "it can run on its own or as an optional step in VACUUM",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "These statistics are gathered by the ANALYZE command, which can be invoked by itself or as an optional step in VACUUM."
+      }
+     ]
+    },
+    {
+     "text": "ANALYZE samples rows randomly instead of reading every row.",
+     "anchor": "ANALYZE samples rows randomly instead of reading every row",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "ANALYZE uses a statistically random sampling of the rows of a table rather than reading every single row."
+      }
+     ]
+    },
+    {
+     "text": "It is usually best to just analyze the whole database.",
+     "anchor": "it is usually best to just analyze the whole database",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "In practice, however, it is usually best to just analyze the entire database, because it is a fast operation."
+      }
+     ]
+    },
+    {
+     "text": "By default, ANALYZE samples 30,000 rows per table.",
+     "anchor": "by default it samples 30,000 rows per table",
+     "verdict": "UNSUPPORTED",
+     "type": "extrinsic_true",
+     "evidence": []
+    },
+    {
+     "text": "The autovacuum daemon schedules ANALYZE purely as a function of the number of rows inserted or updated.",
+     "anchor": "The autovacuum daemon schedules ANALYZE purely as a function of the number of rows inserted or updated",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "The daemon schedules ANALYZE strictly as a function of the number of rows inserted or updated"
+      }
+     ]
+    },
+    {
+     "text": "Autovacuum may skip ANALYZE on a table whose statistical distribution changed meaningfully if only a few rows were touched.",
+     "anchor": "it may skip a table whose statistical distribution changed meaningfully if only a few rows were touched",
+     "verdict": "SUPPORTED",
+     "type": "inference_modality_weak",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "The daemon schedules ANALYZE strictly as a function of the number of rows inserted or updated; it has no knowledge of whether that will lead to meaningful statistical changes."
+      }
+     ]
+    },
+    {
+     "text": "Changes to partitions or inheritance children do not trigger autoanalyze on the parent table.",
+     "anchor": "Changes to partitions or inheritance children do not trigger autoanalyze on the parent table",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "Tuples changed in partitions and inheritance children do not trigger analyze on the parent table."
+      }
+     ]
+    },
+    {
+     "text": "An inheritance parent table is never analyzed by autovacuum.",
+     "anchor": "an inheritance parent is never analyzed by autovacuum",
+     "verdict": "CONTRADICTED",
+     "type": "exception_ignored",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "Inheritance parents will only be analyzed if the parent itself is changed"
+      }
+     ]
+    },
+    {
+     "text": "Autovacuum runs ANALYZE on a partitioned table once its partitions change significantly.",
+     "anchor": "autovacuum runs ANALYZE on a partitioned table only after its partitions change significantly",
+     "verdict": "CONTRADICTED",
+     "type": "negation_flip",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "this means that autovacuum does not run ANALYZE on partitioned tables"
+      },
+      {
+       "p": 6,
+       "quote": "The autovacuum daemon does not issue ANALYZE commands for partitioned tables."
+      }
+     ]
+    },
+    {
+     "text": "A timestamp column recording each row's update time will probably need more frequent statistics updates than a URL column.",
+     "anchor": "A timestamp column that records each row's update time will probably need more frequent statistics updates than a column of URLs.",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "such a column will probably need more frequent statistics updates than, say, a column containing URLs for pages accessed on a website."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reason-11-sqlite-comparisons",
+   "categories": [
+    "reasoning"
+   ],
+   "passages": [
+    "sqlite:4",
+    "sqlite:6",
+    "sqlite:7",
+    "sqlite:8",
+    "sqlite:18",
+    "sqlite:19",
+    "sqlite:20",
+    "sqlite:23"
+   ],
+   "answer": "WAL write transactions write content once instead of twice, so they are faster than rollback-journal write transactions, and checkpoints are slower than WAL write transactions. It follows that a checkpoint is also slower than a rollback-journal write transaction. For read-heavy applications, WAL might be about 1% or 2% slower than rollback mode, and WAL performs worse than rollback mode for transactions over 100 MB in every SQLite version. Read performance in WAL mode deteriorates as the WAL file grows, so for maximum read performance one would checkpoint as often as every COMMIT. In the rollback-journal approach a COMMIT happens when the journal is deleted, whereas in WAL a COMMIT happens when a commit record is appended to the WAL, so a WAL commit never has to write to the original database file.",
+   "claims": [
+    {
+     "text": "WAL write transactions write content once instead of twice.",
+     "anchor": "WAL write transactions write content once instead of twice",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "Write transactions are very fast since they only involve writing the content once (versus twice for rollback-journal transactions)"
+      }
+     ]
+    },
+    {
+     "text": "WAL write transactions are faster than rollback-journal write transactions.",
+     "anchor": "so they are faster than rollback-journal write transactions",
+     "verdict": "SUPPORTED",
+     "type": "light_inference",
+     "evidence": [
+      {
+       "p": 4,
+       "quote": "Write transactions are very fast since they only involve writing the content once (versus twice for rollback-journal transactions)"
+      }
+     ]
+    },
+    {
+     "text": "Checkpoints are slower than WAL write transactions.",
+     "anchor": "checkpoints are slower than WAL write transactions",
+     "verdict": "SUPPORTED",
+     "type": "near_verbatim",
+     "evidence": [
+      {
+       "p": 6,
+       "quote": "These factors combine to make checkpoints slower than write transactions."
+      }
+     ]
+    },
+    {
+     "text": "A checkpoint is slower than a rollback-journal write transaction.",
+     "anchor": "a checkpoint is also slower than a rollback-journal write transaction",
+     "verdict": "UNSUPPORTED",
+     "type": "invalid_transitive",
+     "evidence": [],
+     "note": "Both are slower than a WAL write; nothing orders them against each other."
+    },
+    {
+     "text": "For read-heavy applications, WAL might be about 1% or 2% slower than rollback mode.",
+     "anchor": "For read-heavy applications, WAL might be about 1% or 2% slower than rollback mode",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 0,
+       "quote": "WAL might be very slightly slower (perhaps 1% or 2% slower) than the traditional rollback-journal approach in applications that do mostly reads and seldom write."
+      }
+     ]
+    },
+    {
+     "text": "WAL performs worse than rollback mode for transactions over 100 MB in every SQLite version.",
+     "anchor": "WAL performs worse than rollback mode for transactions over 100 MB in every SQLite version",
+     "verdict": "CONTRADICTED",
+     "type": "temporal_update",
+     "evidence": [
+      {
+       "p": 1,
+       "quote": "Beginning with version 3.11.0 (2016-02-15), WAL mode works as efficiently with large transactions as does rollback mode."
+      }
+     ]
+    },
+    {
+     "text": "Read performance in WAL mode deteriorates as the WAL file grows.",
+     "anchor": "Read performance in WAL mode deteriorates as the WAL file grows",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 5,
+       "quote": "read performance deteriorates as the WAL file grows in size"
+      }
+     ]
+    },
+    {
+     "text": "For maximum read performance, one would checkpoint as often as every COMMIT.",
+     "anchor": "for maximum read performance one would checkpoint as often as every COMMIT",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 7,
+       "quote": "To maximize the read performance, one wants to keep the WAL as small as possible and hence run checkpoints frequently, perhaps as often as every COMMIT."
+      }
+     ]
+    },
+    {
+     "text": "In the rollback-journal approach, a COMMIT happens when the journal is deleted.",
+     "anchor": "In the rollback-journal approach a COMMIT happens when the journal is deleted",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 2,
+       "quote": "The COMMIT occurs when the rollback journal is deleted."
+      }
+     ]
+    },
+    {
+     "text": "In WAL mode, a COMMIT happens when a commit record is appended to the WAL.",
+     "anchor": "in WAL a COMMIT happens when a commit record is appended to the WAL",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "A COMMIT occurs when a special record indicating a commit is appended to the WAL."
+      }
+     ]
+    },
+    {
+     "text": "A WAL commit never has to write to the original database file.",
+     "anchor": "a WAL commit never has to write to the original database file",
+     "verdict": "SUPPORTED",
+     "type": "paraphrase",
+     "evidence": [
+      {
+       "p": 3,
+       "quote": "Thus a COMMIT can happen without ever writing to the original database"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

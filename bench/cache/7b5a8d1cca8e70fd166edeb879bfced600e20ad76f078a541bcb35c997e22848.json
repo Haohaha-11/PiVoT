@@ -1,0 +1,1 @@
+{"text": "{\"claims\": [{\"id\": \"c2\", \"evidence\": [], \"check\": null, \"reasoning\": \"P6.S0 supports only that everysec is the default; P5.S4 mentions version 2.4 only for performance, not for when it became default. The 'since 2.4' part is unsupported.\"}]}", "prompt_tokens": 2213, "completion_tokens": 683, "latency_ms": 7073, "cached": false}

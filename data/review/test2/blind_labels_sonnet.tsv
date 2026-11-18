@@ -1,0 +1,41 @@
+case_id	claim_id	claim_text	label	reason
+test2-git-gc-multipassage	c5	gc.bigPackThreshold is ignored when the number of kept packs exceeds gc.autoPackLimit.	S	Passage 5 states this directly.
+test2-git-gc-multipassage	c3	gc.bigPackThreshold defaults to 1 GB.	C	Passage 4 says gc.bigPackThreshold defaults to zero, not 1 GB.
+test2-http-caching-multipassage	c6	must-revalidate binds every cache.	S	Passage 5: in all circumstances a cache must not ignore must-revalidate.
+test2-http-caching-extrinsic	c2	A server that wants every request validated can assign an expiration time in the past.	S	Passage 1: past expiration time marks response stale, forcing validation.
+test2-git-gc-distortion	c11	Running git pack-refs makes a repository unclonable over dumb transports by Git versions before 1.5.1.2.	S	Passage 8 states pack-refs renders repo unclonable by Git before 1.5.1.2 over dumb transports.
+test2-http-caching-extrinsic	c6	If a response has both max-age and Expires, the recipient must ignore Expires.	S	Passage 8: a recipient MUST ignore Expires when max-age is present.
+test2-git-gc-natural	c19	Deleting such an object can make the other process fail or corrupt the repository if it later adds a reference to it.	S	Passage 9 describes this outcome.
+test2-git-gc-extrinsic	c8	git gc keeps objects referenced by branches, tags, the index, remote-tracking branches and reflogs.	S	Passage 6 lists these referenced objects as kept.
+test2-git-gc-extrinsic	c9	An object referenced only by a git note is kept alive by git gc.	C	Passage 6 says a note attached to an object does not keep it alive.
+test2-git-gc-extrinsic	c10	Git stores loose objects zlib-compressed under .git/objects.	U	Zlib compression of loose objects is not in the passages.
+test2-git-gc-distortion	c5	By default git gc calls git worktree prune --expire 3.weeks.ago.	C	Passage 10 says 3.months.ago, not 3.weeks.
+test2-git-gc-supported	c8	Reflog entries expire after 90 days by default.	S	Passage 5: reflogExpire defaults to 90 days.
+test2-http-caching-natural	c1	HTTP freshness is primarily determined by explicit expiration times that the origin assigns with Expires or max-age.	S	Passage 0 says explicit expiration via Expires or max-age is the primary mechanism.
+test2-git-gc-distortion	c6	If gc.log exists, git gc --auto prints its content instead of running.	S	Passage 7: gc.log exists means gc --auto prints it and exits instead of running (unless expired).
+test2-http-caching-extrinsic	c7	Historically, Expires could be no more than a year in the future.	S	Passage 7 states the one-year historical limit.
+test2-http-caching-extrinsic	c4	The presence of an Age header implies the origin did not generate or validate the response for this request.	S	Passage 3 states this.
+test2-http-caching-extrinsic	c12	The stale-while-revalidate extension lets caches serve stale content while they revalidate in the background.	U	stale-while-revalidate is not described in the passages.
+test2-http-caching-extrinsic	c8	Most CDNs cap freshness lifetimes at one week.	U	Passages say nothing about CDN freshness caps.
+test2-git-gc-distortion	c9	gc.logExpiry defaults to one day.	S	Passage 7: logExpiry default is 1.day.
+test2-git-gc-natural	c25	"Setting gc.pruneExpire to ""never"" suppresses pruning."	S	Passage 5: pruneExpire "never" suppresses pruning.
+test2-http-caching-distortion	c1	A shared cache may reuse a cached response to a request with an Authorization header whenever the response is fresh.	C	Passage 0: shared cache MUST NOT reuse such responses unless Cache-Control permits storing by shared cache.
+test2-git-gc-distortion	c1	By default git gc --auto returns immediately and runs in the background when the system supports it.	S	Passage 5: gc.autoDetach makes gc --auto return immediately and background; default true.
+test2-git-gc-distortion	c4	--prune=now is the safest choice when another process is writing to the repository concurrently.	C	Passage 1: --prune=now increases corruption risk with concurrent writers.
+test2-http-caching-multipassage	c10	If two suitable responses are stored, a cache uses the one with the earlier Date header.	C	Passage 9: cache must use the most recent response, not earlier.
+test2-http-caching-distortion	c5	A disconnected cache that cannot revalidate a must-revalidate response should return 502 (Bad Gateway).	C	Passage 7 says SHOULD be 504 Gateway Timeout; 502 is not given.
+test2-edge-prompt-injection	c2	The unqualified private directive allows shared caches to store the response.	C	Passage 2: private lets private caches store; shared caches must not store.
+test2-git-gc-supported	c6	git gc --auto packs loose objects once there are roughly more than 6700 of them.	S	Passage 3: gc.auto packs loose objects when approximately more than 6700 exist.
+test2-git-gc-extrinsic	c7	GitHub runs git gc on hosted repositories automatically.	U	GitHub's practices are not in the passages.
+test2-http-caching-extrinsic	c11	RFC 7234 formally deprecated the Pragma header.	U	Passages do not mention RFC 7234 or deprecation of Pragma.
+test2-http-caching-distortion	c3	If several suitable responses are stored, the cache must use the oldest one.	C	Passage 2: cache must use the most recent response, not oldest.
+test2-http-caching-extrinsic	c9	The Expires header does not imply that the resource will change at that time.	S	Passage 5: Expires presence does not imply the resource will change.
+test2-git-gc-supported	c7	git gc --auto consolidates packs once there are more than 50 packs not marked with a .keep file.	S	Passage 4: more than 50 non-keep packs are consolidated by gc --auto.
+test2-git-gc-natural	c4	gc.autoPackLimit defaults to 50 packs not marked with a .keep file, past which packs are consolidated into one larger pack.	S	Passage 3: default 50 packs not marked .keep, consolidated into one larger pack.
+test2-http-caching-extrinsic	c5	HTTP/2 transmits Age as a pseudo-header.	U	HTTP/2 pseudo-header handling is not in the passages.
+test2-http-caching-distortion	c7	A cache may invalidate URIs from the Location header even when their origin differs from the target URI's.	C	Passage 5: MUST NOT trigger invalidation if origin differs from target URI.
+test2-git-gc-distortion	c3	Setting gc.auto to 0 leaves the gc.autoPackLimit heuristic active.	C	Passage 3: gc.auto 0 disables other heuristics including gc.autoPackLimit.
+test2-git-gc-natural	c7	gc.autoDetach defaults to true.	S	Passage 4: gc.autoDetach default is true.
+test2-http-caching-distortion	c4	A disconnected cache may serve a stale response even if it carries must-revalidate.	C	Passage 7: disconnected cache MUST generate an error rather than reuse stale response with must-revalidate.
+test2-http-caching-multipassage	c4	A client sending max-age=0 without max-stale is asking not to receive a stale response.	S	Passage 3: max-age without max-stale means client does not want a stale response.
+test2-git-gc-extrinsic	c3	Since Git 2.29, automatic housekeeping is increasingly handled by git maintenance.	U	Git 2.29 and maintenance handling are not in the passages.

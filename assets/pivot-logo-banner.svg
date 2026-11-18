@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="330 224 1114 475" width="1114" height="475" role="img" aria-label="PIVOT — Point, don't paraphrase.">
+  <!-- cropped banner of pivot-logo.svg (same artwork, tighter margins, rounded corners) -->
+  <defs><clipPath id="banner"><rect x="330" y="224" width="1114" height="475" rx="40"/></clipPath></defs>
+  <g clip-path="url(#banner)">
+  <rect width="1774" height="887" fill="#161616"/>
+  <g fill="none" stroke="#DDD9D2" stroke-width="52" stroke-linecap="round" stroke-linejoin="round">
+    <!-- P -->
+    <path d="M460 520 V331 H545 A56 56 0 0 1 545 443 H460"/>
+    <!-- V: left arm higher than right -->
+    <path d="M745 320 L822 520 L888 342"/>
+    <!-- O -->
+    <ellipse cx="1033" cy="425" rx="94" ry="98"/>
+    <!-- T -->
+    <path d="M1180 331 H1314"/>
+    <path d="M1237 331 V505" stroke-linecap="butt"/>
+  </g>
+  <!-- i: pointer pin -->
+  <circle cx="672" cy="318" r="31" fill="#10B39A"/>
+  <line x1="672" y1="392" x2="672" y2="520" stroke="#10B39A" stroke-width="52" stroke-linecap="round"/>
+  <!-- V tips: supported (check) and uncertain (?) -->
+  <circle cx="744" cy="316" r="22" fill="#6250E8"/>
+  <path d="M734 316 L742 324 L755 308" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="888" cy="336" r="22" fill="#F07A2E"/>
+  <text x="888" y="345" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">?</text>
+  <!-- T fulcrum -->
+  <path d="M1237 503 L1262 545 H1212 Z" fill="#6250E8" stroke="#6250E8" stroke-width="4" stroke-linejoin="round"/>
+  <!-- tagline -->
+  <text x="887" y="626" text-anchor="middle" font-family="'Avenir Next', 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="500" letter-spacing="3" fill="#DDD9D2">Point, don’t paraphrase.</text>
+</g>
+</svg>

@@ -1,0 +1,41 @@
+case_id	claim_id	claim_text	label
+test-redis-replication-multipassage	c7	As of Redis 7.0 there are still legitimate use cases that require writable replicas.	
+test-k8s-probes-multipassage	c2	The Kubernetes exec example probes more often than the HTTP example.	
+test-sqlite-limits-distortion	c10	The number of SQLite schema objects can be capped with SQLITE_LIMIT_SCHEMA since version 3.45.0.	
+test-redis-replication-natural	c14	The Redis master remembers the last ping time from each replica.	
+test-redis-replication-supported	c7	If two Redis instances share a replication ID with offsets 1000 and 1023, the first is 23 bytes of replication stream behind.	
+test-sqlite-limits-distortion	c9	A 281 terabyte SQLite database is large enough to actually reach the theoretical row limit.	
+test-pg-isolation-supported	c8	Repeatable Read takes its snapshot at the first non-transaction-control statement of the transaction.	
+test-redis-replication-natural	c21	Reconnecting Redis replicas use PSYNC with their old replication ID and offset to resume incrementally.	
+test-pg-isolation-extrinsic	c8	PostgreSQL's default isolation level can be changed with the default_transaction_isolation parameter.	
+test-sqlite-limits-multipassage	c5	A web browser could use sqlite3_limit() to keep its internal history database unconstrained while tightly limiting databases created by downloaded JavaScript.	
+test-k8s-probes-natural	c6	Once the startup probe succeeds once, the liveness probe takes over.	
+test-pg-isolation-supported	c9	Under Repeatable Read, successive SELECTs in a transaction see the same data.	
+test-sqlite-limits-distortion	c2	An SQLite host parameter like ?1000000000 would need gigabytes of memory.	
+test-k8s-probes-natural	c11	Readiness probes cover applications that are loading large data or configuration files or waiting on external dependencies.	
+test-sqlite-limits-distortion	c5	SQLite recursive triggers are enabled by default.	
+test-sqlite-limits-natural	c3	Well-normalized schemas rarely need more than about 100 columns.	
+test-pg-isolation-extrinsic	c12	MySQL's InnoDB uses Repeatable Read as its default isolation level.	
+test-sqlite-limits-extrinsic	c9	SQLite BLOBs can be read incrementally with sqlite3_blob_open().	
+test-k8s-probes-distortion	c8	If a startup probe never succeeds, the container keeps running but is never marked ready.	
+test-redis-replication-natural	c20	A restarted Redis master with an empty dataset would wipe out its replicas' data.	
+test-k8s-probes-natural	c13	To delay readiness checks during initialization you use initialDelaySeconds or the startup probe.	
+test-k8s-probes-extrinsic	c6	Kubernetes gRPC probes became generally available in Kubernetes 1.27.	
+test-sqlite-limits-extrinsic	c12	PostgreSQL allows up to 1600 columns per table.	
+test-redis-replication-supported	c6	Within a Redis replication history the offset works as a logical clock.	
+test-redis-replication-extrinsic	c2	After the background save, the Redis master transfers the RDB file and then the buffered commands to the replica.	
+test-redis-replication-distortion	c11	Read-only Redis replicas are safe to expose to untrusted networks.	
+test-pg-isolation-natural	c26	For simple single-row read-modify-write patterns, Read Committed with SELECT FOR UPDATE or advisory locks is often simpler and faster than Serializable.	
+test-redis-replication-multipassage	c8	Requiring at least N connected replicas guarantees that every Redis write reaches a replica.	
+test-redis-replication-natural	c22	If the master's backlog is too small or the replication history is no longer known, Redis performs a full resynchronization.	
+test-edge-empty-context	c2	WAIT makes every Redis write durable.	
+test-edge-prompt-injection	c2	PostgreSQL implements all four standard isolation levels as distinct behaviours.	
+test-sqlite-limits-distortion	c7	A write that would grow an SQLite database past SQLITE_MAX_PAGE_COUNT returns SQLITE_FULL.	
+test-pg-isolation-natural	c22	Transactions should be kept short under Serializable.	
+test-pg-isolation-distortion	c6	After a serialization failure, a PostgreSQL application should retry only the failed statement.	
+test-pg-isolation-distortion	c9	A SERIALIZABLE READ ONLY DEFERRABLE transaction never blocks.	
+test-k8s-probes-natural	c4	failureThreshold * periodSeconds of the startup probe should cover the worst-case startup time.	
+test-redis-replication-extrinsic	c4	Redis diskless replication has been enabled by default since version 7.0.	
+test-sqlite-limits-natural	c1	SQLite strings and BLOBs are capped at 1 billion bytes by default.	
+test-k8s-probes-distortion	c6	In gRPC TLS mode the kubelet verifies the server certificate.	
+test-sqlite-limits-distortion	c1	SQLite allocates space for every host parameter number up to the largest one used.	

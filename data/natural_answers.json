@@ -1,0 +1,71 @@
+[
+ {
+  "id": "test-sqlite-limits-natural",
+  "refs": [
+   "sqlite_limits:5",
+   "sqlite_limits:8",
+   "sqlite_limits:12",
+   "sqlite_limits:13",
+   "sqlite_limits:15",
+   "sqlite_limits:19",
+   "sqlite_limits:23",
+   "sqlite_limits:25",
+   "sqlite_limits:27"
+  ],
+  "q": "What default limits in SQLite should I know about when designing a schema and writing queries?",
+  "generator": "glm-5.3",
+  "answer": "When designing for SQLite, the main default limits to keep in mind are: strings and BLOBs are capped at 1 billion bytes (SQLITE_MAX_LENGTH), and tables can have at most 2000 columns (SQLITE_MAX_COLUMN), though well-normalized schemas rarely need more than about 100. Queries with joins are limited to 64 tables, and this limit cannot be raised or lowered because the query planner uses one-bit-per-table bitmaps internally. Expression trees can nest up to 1000 levels deep by default (SQLITE_MAX_EXPR_DEPTH, where 0 means unlimited), and compound SELECT statements can have at most 500 terms (SQLITE_MAX_COMPOUND_SELECT), which is generous since real-world compound selects almost never exceed single digits. Host parameter numbers are limited to 999 in versions before 3.32.0 and 32766 in later versions, which matters because SQLite allocates space for every parameter between 1 and the highest number used, so a stray ?1000000000 could otherwise demand gigabytes of memory. You can ATTACH up to 10 databases to a single connection by default (SQLITE_MAX_ATTACHED), with a hard ceiling of 125. Finally, database size is governed by SQLITE_MAX_PAGE_COUNT, which defaults to 4294967294 pages since version 3.45.0, yielding roughly 17.5 terabytes with the default 4096-byte page size or up to about 281 terabytes with the maximum 65536-byte pages. Most of these limits (except the join limit) can be adjusted at compile time if your workload genuinely requires it."
+ },
+ {
+  "id": "test-redis-replication-natural",
+  "refs": [
+   "redis_replication:2",
+   "redis_replication:3",
+   "redis_replication:6",
+   "redis_replication:11",
+   "redis_replication:37",
+   "redis_replication:38",
+   "redis_replication:39",
+   "redis_replication:40",
+   "redis_replication:54"
+  ],
+  "q": "How does Redis replication deal with consistency and data loss, and what should I watch out for?",
+  "generator": "glm-5.3",
+  "answer": "Redis replication is asynchronous by default, which keeps latency low and performance high, but it means the master does not wait for replicas to process each command—replicas only periodically acknowledge how much of the replication stream they've processed, so there is always a window in which a write exists on the master but not yet on any replica. You can narrow this window for individual writes using the `WAIT` command, which blocks until a specified number of replicas have acknowledged the write, but be aware this is not strong consistency: Redis does not become a CP system, and acknowledged writes can still be lost during a failover depending on your persistence configuration, though the probability of loss is greatly reduced. To bound data loss more globally, you can configure the master (since Redis 2.8) to accept writes only when at least N replicas are connected, and additionally require that those replicas have a lag no greater than a maximum number of seconds—this works because replicas ping the master every second with their processed offsets, and the master remembers the last ping time from each replica. Think of this as a best-effort data safety mechanism: consistency is not guaranteed for any given write, but the exposure window is restricted to a known number of seconds, and bounded loss is better than unbounded. It is strongly advised to enable persistence on both the master and the replicas; if that's impossible due to very slow disks, configure instances to avoid restarting automatically after a reboot, since a restarted master with an empty dataset would otherwise wipe out its replicas' data. When replicas reconnect they use `PSYNC` with their old replication ID and offset to resume incrementally, but if the master's backlog buffer is too small or the replication history is no longer known, a full resynchronization from scratch occurs, so size your `repl-backlog` appropriately for expected disconnections. Finally, note that replicas ignore `maxmemory` by default (until promoted after a failover or manually), so eviction decisions are made on the master, which propagates `DEL` commands to the replicas as keys are evicted."
+ },
+ {
+  "id": "test-k8s-probes-natural",
+  "refs": [
+   "k8s_probes:1",
+   "k8s_probes:6",
+   "k8s_probes:13",
+   "k8s_probes:16",
+   "k8s_probes:19",
+   "k8s_probes:20",
+   "k8s_probes:21",
+   "k8s_probes:22",
+   "k8s_probes:23"
+  ],
+  "q": "How should I configure liveness, readiness and startup probes for a service that starts slowly?",
+  "generator": "glm-5.3",
+  "answer": "For a slow-starting service, the recommended pattern is to combine a startup probe with your liveness and readiness probes rather than trying to stretch `initialDelaySeconds` on the liveness check. Configure the startup probe with the same command, HTTP, or TCP check you intend to use for liveness, but set `failureThreshold * periodSeconds` long enough to cover your worst-case startup time — for example, a `failureThreshold` of 30 with `periodSeconds` of 10 gives the application up to 300 seconds to finish initializing. Once the startup probe succeeds once, the liveness probe takes over and can remain aggressive (short period, low threshold) so deadlocks are detected quickly; if the startup probe never succeeds, the container is killed after the timeout and handled according to the pod's `restartPolicy`. Add a readiness probe (HTTP GET, TCP connect, or exec) so the pod is marked unready and receives no traffic from Services while it loads large data or configuration files or waits on external dependencies, becoming ready only once the check passes. Keep in mind that readiness and liveness probes do not depend on each other to succeed, so you must use `initialDelaySeconds` or the startup probe itself to delay readiness checks during initialization. You can safely run readiness and liveness probes in parallel on the same container, which ensures traffic never reaches a container that isn't ready while still restarting containers that genuinely fail. For the liveness check itself, prefer a meaningful HTTP endpoint like `/healthz` or a TCP connect on your service port over a trivial exec such as `cat /tmp/healthy`, since a real health endpoint better reflects application state; remember that any probe error counts as a failure, and a failing liveness probe causes the kubelet to kill and restart the container."
+ },
+ {
+  "id": "test-pg-isolation-natural",
+  "refs": [
+   "pg_isolation:2",
+   "pg_isolation:3",
+   "pg_isolation:5",
+   "pg_isolation:16",
+   "pg_isolation:17",
+   "pg_isolation:20",
+   "pg_isolation:22",
+   "pg_isolation:23",
+   "pg_isolation:27",
+   "pg_isolation:30"
+  ],
+  "q": "How do PostgreSQL's isolation levels differ, and when should I use Serializable?",
+  "generator": "glm-5.3",
+  "answer": "PostgreSQL accepts all four standard isolation levels but only implements three distinct behaviors, since Read Uncommitted is treated identically to Read Committed, the default level, where each statement sees a snapshot of data committed before that statement began—so two SELECTs in one transaction can observe different data if other transactions commit in between. Repeatable Read strengthens this by taking its snapshot at the start of the first non-transaction-control statement in the transaction, so all queries in the transaction see the same stable view, and it also prevents phantom reads, exceeding the SQL standard's minimum requirements for that level. However, Repeatable Read does not prevent serialization anomalies: a transaction may see a state that never existed in any serial execution (for example, reading an updated control record but a stale detail record), so enforcing business rules at this level typically requires explicit locking such as SELECT FOR UPDATE or table-level locks. Serializable, implemented since version 9.1, works exactly like Repeatable Read but adds monitoring based on predicate locks that track read-write dependencies among concurrent transactions; these locks never block or contribute to deadlocks, but if a combination of transactions could produce a result inconsistent with any serial order of execution, one of them is aborted with a serialization failure. You should use Serializable when correctness depends on invariants spanning multiple rows or predicates that are awkward to protect with explicit locks—things like maintaining aggregate constraints, check-then-act logic, or generating keys from existing data—provided your application is prepared to retry transactions that fail with a serialization error (SQLSTATE 40001). Keep transactions short at this level, since the monitoring overhead and the probability of conflicts and retries both grow with transaction duration and concurrency, and note that even Serializable can report unique constraint violations if some transactions insert keys without first checking for them, so all writers should follow a consistent check-before-insert protocol. For simple read-modify-write patterns on single rows, Read Committed combined with SELECT FOR UPDATE, or explicit advisory locks, is often simpler and faster than Serializable."
+ }
+]

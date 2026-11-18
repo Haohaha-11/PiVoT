@@ -1,0 +1,1 @@
+{"text": "{\"claims\": [{\"id\": \"c0\", \"evidence\": [{\"sid\": \"P0.S1\", \"rel\": \"refutes\"}], \"check\": null, \"reasoning\": \"Passage states the default page size is 4096 bytes, incompatible with the claimed 8192 bytes.\"}]}", "prompt_tokens": 664, "completion_tokens": 94, "latency_ms": 2396, "cached": false}

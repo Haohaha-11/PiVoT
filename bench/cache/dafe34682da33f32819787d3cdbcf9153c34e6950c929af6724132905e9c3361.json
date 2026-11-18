@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c2\", \"label\": \"U\", \"reason\": \"No passages provided; claim is neither entailed nor contradicted by any passage.\"}]}", "prompt_tokens": 1243, "completion_tokens": 72, "latency_ms": 2689, "cached": false}

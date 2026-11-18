@@ -1,0 +1,120 @@
+qwen2.5-1.5b-instruct  e2e    pilot-05-sqlite-multi-passage               1.3s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-07-redis-rdb-mixed                    1.4s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-03-sqlite-negation-and-strength       2.1s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-08-redis-aof-rewrite                  2.1s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-10-prompt-injection                   2.2s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-01-sqlite-all-supported               2.2s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-06-redis-fsync-policies               2.2s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-09-no-factual-claims                  2.2s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-04-sqlite-extrinsic                   2.4s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-02-sqlite-number-distortion           1.1s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  e2e    pilot-02-sqlite-number-distortion           2.5s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-03-sqlite-negation-and-strength       1.2s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-06-redis-fsync-policies               1.1s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-08-redis-aof-rewrite                  1.1s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-01-sqlite-all-supported               2.1s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-09-no-factual-claims                  1.1s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-05-sqlite-multi-passage               1.7s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-10-prompt-injection                   1.7s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-07-redis-rdb-mixed                    2.0s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen2.5-1.5b-instruct  oracle pilot-04-sqlite-extrinsic                   2.2s ERR HTTP 403: {"error":{"message":"Model access denied.","type":"Model.AccessDenied"
+qwen3.6-35b-a3b        e2e    pilot-09-no-factual-claims                  2.0s ok
+qwen3.6-35b-a3b        e2e    pilot-10-prompt-injection                   3.3s ok
+qwen3.6-35b-a3b        e2e    pilot-01-sqlite-all-supported               5.3s ok
+qwen3.6-35b-a3b        e2e    pilot-02-sqlite-number-distortion           5.2s ok
+qwen3.6-35b-a3b        e2e    pilot-04-sqlite-extrinsic                   5.7s ok
+qwen3.6-35b-a3b        e2e    pilot-03-sqlite-negation-and-strength       6.0s ok
+qwen3.6-35b-a3b        e2e    pilot-07-redis-rdb-mixed                    6.8s ok
+qwen3.6-35b-a3b        e2e    pilot-05-sqlite-multi-passage               8.0s ok
+qwen3.6-35b-a3b        e2e    pilot-08-redis-aof-rewrite                  7.5s ok
+qwen3.6-35b-a3b        e2e    pilot-06-redis-fsync-policies               8.3s ok
+qwen3.6-35b-a3b        oracle pilot-02-sqlite-number-distortion           4.8s ok
+qwen3.6-35b-a3b        oracle pilot-03-sqlite-negation-and-strength       4.7s ok
+qwen3.6-35b-a3b        oracle pilot-09-no-factual-claims                  1.7s ok
+qwen3.6-35b-a3b        oracle pilot-04-sqlite-extrinsic                   6.8s ok
+qwen3.6-35b-a3b        oracle pilot-10-prompt-injection                   3.9s ok
+qwen3.6-35b-a3b        oracle pilot-07-redis-rdb-mixed                    6.5s ok
+qwen3.6-35b-a3b        oracle pilot-08-redis-aof-rewrite                  6.4s ok
+qwen3.6-35b-a3b        oracle pilot-05-sqlite-multi-passage               8.9s ok
+qwen3.6-35b-a3b        oracle pilot-06-redis-fsync-policies               9.0s ok
+qwen3.6-35b-a3b        oracle pilot-01-sqlite-all-supported              13.6s ok
+qwen3.7-plus           e2e    pilot-09-no-factual-claims                  5.5s ok
+qwen3.7-plus           e2e    pilot-02-sqlite-number-distortion          12.1s ok
+qwen3.7-plus           e2e    pilot-01-sqlite-all-supported              13.2s ok
+qwen3.7-plus           e2e    pilot-10-prompt-injection                   6.0s ok
+qwen3.7-plus           e2e    pilot-03-sqlite-negation-and-strength      12.9s ok
+qwen3.7-plus           e2e    pilot-04-sqlite-extrinsic                  14.4s ok
+qwen3.7-plus           e2e    pilot-08-redis-aof-rewrite                 13.3s ok
+qwen3.7-plus           e2e    pilot-05-sqlite-multi-passage              16.7s ok
+qwen3.7-plus           e2e    pilot-07-redis-rdb-mixed                   14.9s ok
+qwen3.7-plus           oracle pilot-09-no-factual-claims                  3.3s ok
+qwen3.7-plus           oracle pilot-01-sqlite-all-supported              12.8s ok
+qwen3.7-plus           e2e    pilot-06-redis-fsync-policies              19.3s ok
+qwen3.7-plus           oracle pilot-03-sqlite-negation-and-strength      12.1s ok
+qwen3.7-plus           oracle pilot-02-sqlite-number-distortion          13.3s ok
+qwen3.7-plus           oracle pilot-04-sqlite-extrinsic                  13.4s ok
+qwen3.7-plus           oracle pilot-10-prompt-injection                   6.9s ok
+qwen3.7-plus           oracle pilot-05-sqlite-multi-passage              19.0s ok
+qwen3.8-max            e2e    pilot-01-sqlite-all-supported               9.5s ok
+qwen3.7-plus           oracle pilot-07-redis-rdb-mixed                   14.8s ok
+qwen3.8-max            e2e    pilot-02-sqlite-number-distortion           9.5s ok
+qwen3.7-plus           oracle pilot-08-redis-aof-rewrite                 14.1s ok
+qwen3.7-plus           oracle pilot-06-redis-fsync-policies              18.0s ok
+qwen3.8-max            e2e    pilot-03-sqlite-negation-and-strength      10.4s ok
+qwen3.8-max            e2e    pilot-09-no-factual-claims                  3.2s ok
+qwen3.8-max            e2e    pilot-04-sqlite-extrinsic                  12.2s ok
+qwen3.8-max            e2e    pilot-10-prompt-injection                   4.8s ok
+qwen3.8-max            e2e    pilot-05-sqlite-multi-passage              15.2s ok
+qwen3.8-max            oracle pilot-01-sqlite-all-supported               9.1s ok
+qwen3.8-max            oracle pilot-02-sqlite-number-distortion           8.4s ok
+qwen3.8-max            e2e    pilot-07-redis-rdb-mixed                   12.4s ok
+qwen3.8-max            e2e    pilot-08-redis-aof-rewrite                 11.9s ok
+qwen3.8-max            oracle pilot-03-sqlite-negation-and-strength      10.0s ok
+qwen3.8-max            oracle pilot-09-no-factual-claims                  2.8s ok
+qwen3.8-max            e2e    pilot-06-redis-fsync-policies              17.3s ok
+qwen3.8-max            oracle pilot-10-prompt-injection                   4.7s ok
+qwen3.8-max            oracle pilot-05-sqlite-multi-passage              15.3s ok
+qwen3.8-max            oracle pilot-06-redis-fsync-policies              15.0s ok
+qwen3.8-max            oracle pilot-07-redis-rdb-mixed                   12.0s ok
+qwen3.8-max            oracle pilot-04-sqlite-extrinsic                  17.3s ok
+qwen3.8-max            oracle pilot-08-redis-aof-rewrite                 11.1s ok
+deepseek-v4-pro        e2e    pilot-09-no-factual-claims                  8.0s ok
+deepseek-v4-pro        e2e    pilot-10-prompt-injection                  23.6s ok
+deepseek-v4-pro        e2e    pilot-04-sqlite-extrinsic                  43.2s ok
+deepseek-v4-pro        e2e    pilot-01-sqlite-all-supported              46.4s ok
+deepseek-v4-pro        oracle pilot-01-sqlite-all-supported              31.4s ok
+deepseek-v4-pro        e2e    pilot-02-sqlite-number-distortion          55.1s ok
+deepseek-v4-pro        e2e    pilot-03-sqlite-negation-and-strength      55.0s ok
+deepseek-v4-pro        e2e    pilot-08-redis-aof-rewrite                 52.3s ok
+deepseek-v4-pro        oracle pilot-02-sqlite-number-distortion          44.5s ok
+deepseek-v4-pro        e2e    pilot-05-sqlite-multi-passage              73.5s ok
+deepseek-v4-pro        oracle pilot-03-sqlite-negation-and-strength      33.9s ok
+deepseek-v4-pro        e2e    pilot-07-redis-rdb-mixed                   71.6s ok
+deepseek-v4-pro        oracle pilot-09-no-factual-claims                  6.1s ok
+deepseek-v4-pro        oracle pilot-07-redis-rdb-mixed                   30.1s ok
+deepseek-v4-pro        oracle pilot-05-sqlite-multi-passage              38.5s ok
+deepseek-v4-pro        oracle pilot-08-redis-aof-rewrite                 34.4s ok
+deepseek-v4-pro        oracle pilot-06-redis-fsync-policies              41.7s ok
+deepseek-v4-pro        oracle pilot-04-sqlite-extrinsic                  50.8s ok
+deepseek-v4-pro        e2e    pilot-06-redis-fsync-policies              90.6s ok
+deepseek-v4-pro        oracle pilot-10-prompt-injection                  21.5s ok
+kimi-k3.1-pro          e2e    pilot-09-no-factual-claims                  7.7s ok
+kimi-k3.1-pro          e2e    pilot-04-sqlite-extrinsic                  36.8s ERR HTTP 429: {"error":{"message":"InternalError.Algo: An error occurred in model se
+kimi-k3.1-pro          e2e    pilot-03-sqlite-negation-and-strength      42.7s ok
+kimi-k3.1-pro          e2e    pilot-01-sqlite-all-supported              48.5s ok
+kimi-k3.1-pro          e2e    pilot-10-prompt-injection                  28.5s ok
+kimi-k3.1-pro          oracle pilot-01-sqlite-all-supported              36.6s ERR HTTP 429: {"error":{"message":"InternalError.Algo: An error occurred in model se
+kimi-k3.1-pro          e2e    pilot-02-sqlite-number-distortion          63.1s ok
+kimi-k3.1-pro          oracle pilot-02-sqlite-number-distortion          23.6s ok
+kimi-k3.1-pro          oracle pilot-03-sqlite-negation-and-strength      26.0s ok
+kimi-k3.1-pro          e2e    pilot-08-redis-aof-rewrite                 55.3s ok
+kimi-k3.1-pro          oracle pilot-09-no-factual-claims                  5.0s ok
+kimi-k3.1-pro          e2e    pilot-07-redis-rdb-mixed                   60.1s ok
+kimi-k3.1-pro          e2e    pilot-05-sqlite-multi-passage              75.4s ok
+kimi-k3.1-pro          oracle pilot-10-prompt-injection                  15.8s ok
+kimi-k3.1-pro          oracle pilot-04-sqlite-extrinsic                  41.0s ok
+kimi-k3.1-pro          oracle pilot-07-redis-rdb-mixed                   36.4s ERR HTTP 429: {"error":{"message":"InternalError.Algo: An error occurred in model se
+kimi-k3.1-pro          oracle pilot-08-redis-aof-rewrite                 36.8s ERR HTTP 429: {"error":{"message":"InternalError.Algo: An error occurred in model se
+kimi-k3.1-pro          oracle pilot-05-sqlite-multi-passage              75.0s ok
+kimi-k3.1-pro          oracle pilot-06-redis-fsync-policies              66.0s ok
+kimi-k3.1-pro          e2e    pilot-06-redis-fsync-policies             132.1s ok

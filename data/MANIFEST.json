@@ -1,0 +1,100 @@
+{
+ "sha256": {
+  "dev": "d595a52ce9abce29d7b3b518a7d941ae2ca8d6cedd2c716d0267bb8464b8ca28",
+  "test": "ac460062028636daca9697dac575cf51bcef03e5bf72dee464be9b36fd14b3b4",
+  "test2": "6b70c28df26b31742653d10cc514fce06bdb45eaac561651e93ae8f3e8d2de9a"
+ },
+ "test_frozen": true,
+ "test2_frozen": true,
+ "dev": {
+  "cases": 31,
+  "claims": 299,
+  "verdicts": {
+   "SUPPORTED": 215,
+   "CONTRADICTED": 47,
+   "UNSUPPORTED": 37
+  },
+  "reasoning_claims": 113,
+  "contestable_claims": 11,
+  "categories": {
+   "fully_supported": 3,
+   "subtle_distortion": 15,
+   "extrinsic_hallucination": 14,
+   "multi_passage": 5,
+   "edge_no_claims": 1,
+   "edge_injection": 1,
+   "natural_answer": 2,
+   "reasoning": 11
+  },
+  "families": {
+   "sqlite_wal": 14,
+   "redis_persistence": 10,
+   "mixed": 2,
+   "pg_vacuum": 5
+  },
+  "answer_origin": {
+   "crafted": 29,
+   "natural": 2
+  }
+ },
+ "test": {
+  "cases": 23,
+  "claims": 277,
+  "verdicts": {
+   "SUPPORTED": 207,
+   "CONTRADICTED": 33,
+   "UNSUPPORTED": 37
+  },
+  "reasoning_claims": 95,
+  "contestable_claims": 22,
+  "categories": {
+   "fully_supported": 6,
+   "subtle_distortion": 9,
+   "extrinsic_hallucination": 6,
+   "multi_passage": 4,
+   "natural_answer": 4,
+   "edge_no_claims": 1,
+   "edge_injection": 1,
+   "edge_empty_context": 1
+  },
+  "families": {
+   "sqlite_limits": 5,
+   "redis_replication": 6,
+   "k8s_probes": 6,
+   "pg_isolation": 6
+  },
+  "answer_origin": {
+   "crafted": 19,
+   "natural": 4
+  }
+ },
+ "test2": {
+  "cases": 11,
+  "claims": 141,
+  "verdicts": {
+   "SUPPORTED": 112,
+   "CONTRADICTED": 16,
+   "UNSUPPORTED": 13
+  },
+  "reasoning_claims": 41,
+  "contestable_claims": 16,
+  "categories": {
+   "fully_supported": 4,
+   "subtle_distortion": 5,
+   "extrinsic_hallucination": 2,
+   "multi_passage": 2,
+   "natural_answer": 2,
+   "edge_injection": 1
+  },
+  "families": {
+   "git_gc": 5,
+   "http_caching": 6
+  },
+  "answer_origin": {
+   "crafted": 9,
+   "natural": 2
+  }
+ },
+ "test_change_log": [],
+ "guideline": "data/guideline.md"
+}

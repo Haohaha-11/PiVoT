@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 832" width="1600" height="832" role="img" aria-label="Overview of PiVoT: the model points at sentence IDs; code flags hard claims for thinking, then derives verdicts and slices verbatim quotes.">
+<defs><marker id="a57606A" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0.6 L10 5 L0 9.4 z" fill="#57606A"/></marker><marker id="a8C959F" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0.6 L10 5 L0 9.4 z" fill="#8C959F"/></marker><marker id="a1A7F37" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0.6 L10 5 L0 9.4 z" fill="#1A7F37"/></marker><marker id="aCF222E" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0.6 L10 5 L0 9.4 z" fill="#CF222E"/></marker><marker id="aD9661A" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0.6 L10 5 L0 9.4 z" fill="#D9661A"/></marker></defs>
+<rect x="0.0" y="0.0" width="1600.0" height="832.0" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.5"/>
+<rect x="24.0" y="24.0" width="348.0" height="600.0" rx="18" fill="#F6F8FA" stroke="#D0D7DE" stroke-width="1.6"/>
+<text x="44.0" y="70.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="24" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Input</text>
+<rect x="38.0" y="90.0" width="320.0" height="299.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<path d="M52 106 h11.0 l6.16 6.16 v15.84 h-17.16z" fill="#FFFFFF" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M63.0 106 v6.16 h6.16" fill="none" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M55.52 117.44 h10.120000000000001 M55.52 122.28 h10.120000000000001" stroke="#57606A" stroke-width="1.6" stroke-linecap="round"/>
+<text x="82.0" y="124.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Context passages</text>
+<rect x="52.0" y="148.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
+<text x="89.0" y="167.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P0.S0</text>
+<text x="136.0" y="162.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">WAL mode writes</text>
+<text x="136.0" y="185.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">changes to a separate</text>
+<text x="136.0" y="208.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">log file.</text>
+<rect x="52.0" y="235.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
+<text x="89.0" y="254.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P0.S1</text>
+<text x="136.0" y="249.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">The default page size is</text>
+<text x="136.0" y="272.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">4096 bytes.</text>
+<rect x="52.0" y="299.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
+<text x="89.0" y="318.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P1.S0</text>
+<text x="136.0" y="313.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">Checkpoints run every</text>
+<text x="136.0" y="336.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">1000 pages.</text>
+<text x="344.0" y="373.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" font-weight="400" fill="#5B4BDB" text-anchor="end" xml:space="preserve" font-style="italic">sentence IDs added by code</text>
+<rect x="38.0" y="405.0" width="320.0" height="203.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<path d="M52 421 h11.0 l6.16 6.16 v15.84 h-17.16z" fill="#FFFFFF" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M63.0 421 v6.16 h6.16" fill="none" stroke="#57606A" stroke-width="1.6" stroke-linejoin="round"/><path d="M55.52 432.44 h10.120000000000001 M55.52 437.28 h10.120000000000001" stroke="#57606A" stroke-width="1.6" stroke-linecap="round"/>
+<text x="82.0" y="439.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Generated answer</text>
+<text x="54.0" y="477.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">The default page size is 8192</text>
+<text x="54.0" y="505.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">bytes, and checkpoints run every</text>
+<text x="54.0" y="533.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">1000 pages. WAL is always faster</text>
+<text x="54.0" y="561.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">than a rollback journal.</text>
+<rect x="408.0" y="24.0" width="392.0" height="600.0" rx="18" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.6" stroke-dasharray="7 6"/>
+<circle cx="444" cy="62" r="17" fill="#0E9F8A"/>
+<text x="444.0" y="69.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">1</text>
+<text x="472.0" y="70.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="24" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Point</text>
+<rect x="424.0" y="92.0" width="180.5" height="30.0" rx="15.0" fill="#FFFFFF" stroke="#0E9F8A" stroke-width="1.4"/>
+<path d="M444 98.5 Q444 107.0 452.5 107.0 Q444 107.0 444 115.5 Q444 107.0 435.5 107.0 Q444 107.0 444 98.5Z" fill="#0E9F8A"/>
+<text x="459.0" y="112.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#0E9F8A" text-anchor="start" xml:space="preserve">LLM · thinking off</text>
+<text x="424.0" y="148.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">Split into claims; point at sentence IDs.</text>
+<rect x="424.0" y="168.0" width="198.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<circle cx="448" cy="194" r="15" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="448.0" y="199.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c1</text>
+<text x="472.0" y="200.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">The default</text>
+<text x="438.0" y="226.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">page size is 8192</text>
+<text x="438.0" y="248.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">bytes.</text>
+<line x1="630.0" y1="217.0" x2="702.0" y2="217.0" stroke="#CF222E" stroke-width="2.6" stroke-linecap="round" marker-end="url(#aCF222E)"/>
+<text x="666.0" y="207.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#CF222E" text-anchor="middle" xml:space="preserve">refutes</text>
+<rect x="710.0" y="203.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
+<text x="747.0" y="222.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P0.S1</text>
+<rect x="424.0" y="280.0" width="198.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<circle cx="448" cy="306" r="15" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="448.0" y="311.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c2</text>
+<text x="472.0" y="312.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">Checkpoints</text>
+<text x="438.0" y="338.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">run every 1000 pages.</text>
+<line x1="630.0" y1="329.0" x2="702.0" y2="329.0" stroke="#1A7F37" stroke-width="2.6" stroke-linecap="round" marker-end="url(#a1A7F37)"/>
+<text x="666.0" y="319.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#1A7F37" text-anchor="middle" xml:space="preserve">entails</text>
+<rect x="710.0" y="315.0" width="74.0" height="28.0" rx="7" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.4"/>
+<text x="747.0" y="334.5" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="700" fill="#0E9F8A" text-anchor="middle" xml:space="preserve">P1.S0</text>
+<rect x="424.0" y="392.0" width="198.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<circle cx="448" cy="418" r="15" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="448.0" y="423.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c3</text>
+<text x="472.0" y="424.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">WAL is always</text>
+<text x="438.0" y="450.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">faster than a rollback</text>
+<text x="438.0" y="472.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">journal.</text>
+<line x1="630" y1="441" x2="720" y2="441" stroke="#8C959F" stroke-width="2.2" stroke-dasharray="5 6" stroke-linecap="round"/>
+<text x="672.0" y="431.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#57606A" text-anchor="middle" xml:space="preserve">no edge</text>
+<circle cx="747" cy="441" r="15" fill="#FFFFFF" stroke="#8C959F" stroke-width="1.8"/>
+<text x="747.0" y="447.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" font-weight="400" fill="#57606A" text-anchor="middle" xml:space="preserve">∅</text>
+<rect x="424.0" y="510.0" width="360.0" height="98.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<text x="438.0" y="536.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="600" fill="#57606A" text-anchor="start" xml:space="preserve">Model output: IDs only, no quotes</text>
+<text x="438.0" y="565.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">{"sid": "P0.S1", "rel": "refutes"}</text>
+<text x="438.0" y="591.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">{"sid": "P1.S0", "rel": "entails"}</text>
+<rect x="836.0" y="24.0" width="344.0" height="600.0" rx="18" fill="#FFF1E3" stroke="#D9661A" stroke-width="1.6" stroke-dasharray="7 6"/>
+<circle cx="872" cy="62" r="17" fill="#D9661A"/>
+<text x="872.0" y="69.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">2</text>
+<text x="900.0" y="70.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="24" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Think where needed</text>
+<rect x="852.0" y="92.0" width="128.0" height="30.0" rx="15.0" fill="#FFFFFF" stroke="#5B4BDB" stroke-width="1.4"/>
+<g fill="#5B4BDB">
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(0 872 107.0)"/>
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(45 872 107.0)"/>
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(90 872 107.0)"/>
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(135 872 107.0)"/>
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(180 872 107.0)"/>
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(225 872 107.0)"/>
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(270 872 107.0)"/>
+<rect x="870.55" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(315 872 107.0)"/>
+<circle cx="872" cy="107.0" r="5.95"/></g><circle cx="872" cy="107.0" r="2.55" fill="#FFFFFF"/>
+<text x="887.0" y="112.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#5B4BDB" text-anchor="start" xml:space="preserve">code rules</text>
+<line x1="987.0" y1="107.0" x2="1007.0" y2="107.0" stroke="#57606A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#a57606A)"/>
+<rect x="1015.0" y="92.0" width="133.0" height="30.0" rx="15.0" fill="#FFFFFF" stroke="#D9661A" stroke-width="1.4"/>
+<circle cx="1034.984375" cy="105.47" r="5.27" fill="#D9661A"/><rect x="1032.43" y="111.25" width="5.10" height="1.70" rx="1.5" fill="#D9661A"/><rect x="1033.28" y="113.63" width="3.40" height="1.36" rx="1.5" fill="#D9661A"/>
+<text x="1050.0" y="112.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#D9661A" text-anchor="start" xml:space="preserve">thinking on</text>
+<rect x="852.0" y="136.0" width="312.0" height="170.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<text x="866.0" y="164.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17.5" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">A claim is flagged if</text>
+<circle cx="873" cy="187" r="3.2" fill="#5B4BDB"/>
+<text x="886.0" y="193.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">its number is not in the evidence</text>
+<circle cx="873" cy="215" r="3.2" fill="#5B4BDB"/>
+<text x="886.0" y="221.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">it says only, must or always</text>
+<circle cx="873" cy="243" r="3.2" fill="#5B4BDB"/>
+<text x="886.0" y="249.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">evidence both supports and refutes</text>
+<circle cx="873" cy="271" r="3.2" fill="#5B4BDB"/>
+<text x="886.0" y="277.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">the model marked it unsure</text>
+<circle cx="874" cy="352" r="17" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="874.0" y="357.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c1</text>
+<line x1="896.0" y1="352.0" x2="944.0" y2="352.0" stroke="#D9661A" stroke-width="2.8" stroke-linecap="round" marker-end="url(#aD9661A)"/>
+<rect x="950.0" y="320.0" width="214.0" height="64.0" rx="12" fill="#FFFFFF" stroke="#D9661A" stroke-width="2"/>
+<circle cx="976" cy="349.66" r="8.06" fill="#D9661A"/><rect x="972.10" y="358.50" width="7.80" height="2.60" rx="1.5" fill="#D9661A"/><rect x="973.40" y="362.14" width="5.20" height="2.08" rx="1.5" fill="#D9661A"/>
+<text x="998.0" y="347.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17.5" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">judged again</text>
+<text x="998.0" y="369.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17.5" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">with thinking</text>
+<text x="866.0" y="414.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#D9661A" text-anchor="start" xml:space="preserve" font-style="italic">flagged: 8192 is not in “… is 4096 bytes.”</text>
+<circle cx="874" cy="468" r="17" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="874.0" y="473.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c2</text>
+<line x1="896.0" y1="468.0" x2="944.0" y2="468.0" stroke="#8C959F" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="5 6" marker-end="url(#a8C959F)"/>
+<text x="954.0" y="474.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">first-pass result kept</text>
+<circle cx="874" cy="520" r="17" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="874.0" y="525.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c3</text>
+<line x1="896.0" y1="520.0" x2="944.0" y2="520.0" stroke="#8C959F" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="5 6" marker-end="url(#a8C959F)"/>
+<text x="954.0" y="526.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">first-pass result kept</text>
+<text x="1008.0" y="598.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#D9661A" text-anchor="middle" xml:space="preserve">≈ ¼–⅓ of claims get thinking</text>
+<rect x="1216.0" y="24.0" width="360.0" height="600.0" rx="18" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.6" stroke-dasharray="7 6"/>
+<circle cx="1252" cy="62" r="17" fill="#5B4BDB"/>
+<text x="1252.0" y="69.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">3</text>
+<text x="1280.0" y="70.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="24" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">Derive</text>
+<rect x="1232.0" y="92.0" width="190.2" height="30.0" rx="15.0" fill="#FFFFFF" stroke="#5B4BDB" stroke-width="1.4"/>
+<g fill="#5B4BDB">
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(0 1252 107.0)"/>
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(45 1252 107.0)"/>
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(90 1252 107.0)"/>
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(135 1252 107.0)"/>
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(180 1252 107.0)"/>
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(225 1252 107.0)"/>
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(270 1252 107.0)"/>
+<rect x="1250.56" y="98.50" width="2.89" height="4.25" rx="0.68" transform="rotate(315 1252 107.0)"/>
+<circle cx="1252" cy="107.0" r="5.95"/></g><circle cx="1252" cy="107.0" r="2.55" fill="#FFFFFF"/>
+<text x="1267.0" y="112.6" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#5B4BDB" text-anchor="start" xml:space="preserve">deterministic code</text>
+<rect x="1232.0" y="136.0" width="328.0" height="106.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<text x="1246.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">verdict</text>
+<text x="1328.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
+<text x="1356.0" y="166.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">entails / refutes edges</text>
+<text x="1246.0" y="195.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">quote</text>
+<text x="1328.0" y="195.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
+<text x="1356.0" y="195.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="15.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">passage[start:end]</text>
+<text x="1246.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#1F2328" text-anchor="start" xml:space="preserve">numbers</text>
+<text x="1328.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">←</text>
+<text x="1356.0" y="224.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">computed by code</text>
+<rect x="1232.0" y="258.0" width="328.0" height="108.0" rx="10" fill="#FFFFFF" stroke="#CF222E" stroke-width="1.6"/>
+<rect x="1244.0" y="270.0" width="138.8" height="26.0" rx="13" fill="#CF222E" stroke="none" stroke-width="1.5"/>
+<text x="1313.4" y="288.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">CONTRADICTED</text>
+<circle cx="1532" cy="283" r="14" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="1532.0" y="288.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c1</text>
+<line x1="1246" y1="308" x2="1246" y2="354" stroke="#0E9F8A" stroke-width="3" stroke-linecap="round"/>
+<text x="1258.0" y="322.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve" font-style="italic">“The default page size is 4096 bytes.”</text>
+<text x="1258.0" y="345.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="14.5" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">passage 0 · chars 48–84</text>
+<rect x="1232.0" y="378.0" width="328.0" height="108.0" rx="10" fill="#FFFFFF" stroke="#1A7F37" stroke-width="1.6"/>
+<rect x="1244.0" y="390.0" width="112.0" height="26.0" rx="13" fill="#1A7F37" stroke="none" stroke-width="1.5"/>
+<text x="1300.0" y="408.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">SUPPORTED</text>
+<circle cx="1532" cy="403" r="14" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="1532.0" y="408.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c2</text>
+<line x1="1246" y1="428" x2="1246" y2="474" stroke="#0E9F8A" stroke-width="3" stroke-linecap="round"/>
+<text x="1258.0" y="442.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve" font-style="italic">“Checkpoints run every 1000 pages.”</text>
+<text x="1258.0" y="465.0" font-family="Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="14.5" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve">passage 1 · chars 0–33</text>
+<rect x="1232.0" y="498.0" width="328.0" height="110.0" rx="10" fill="#FFFFFF" stroke="#9A6700" stroke-width="1.6"/>
+<rect x="1244.0" y="510.0" width="133.5" height="26.0" rx="13" fill="#9A6700" stroke="none" stroke-width="1.5"/>
+<text x="1310.7" y="528.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" xml:space="preserve">UNSUPPORTED</text>
+<circle cx="1532" cy="523" r="14" fill="#FFFFFF" stroke="#1F2328" stroke-width="1.6"/>
+<text x="1532.0" y="528.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#1F2328" text-anchor="middle" xml:space="preserve">c3</text>
+<text x="1244.0" y="564.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="400" fill="#57606A" text-anchor="start" xml:space="preserve" font-style="italic">no citation: the passages do not say this</text>
+<path d="M377.0 319.5 h11 v-7 l15 11.5 l-15 11.5 v-7 h-11z" fill="#57606A"/>
+<path d="M805.0 319.5 h11 v-7 l15 11.5 l-15 11.5 v-7 h-11z" fill="#57606A"/>
+<path d="M1185.0 319.5 h11 v-7 l15 11.5 l-15 11.5 v-7 h-11z" fill="#57606A"/>
+<rect x="24.0" y="648.0" width="348.0" height="160.0" rx="10" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+<path d="M60 675 Q60 686 71 686 Q60 686 60 697 Q60 686 49 686 Q60 686 60 675Z" fill="#0E9F8A"/>
+<text x="86.0" y="692.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">LLM call, thinking off</text>
+<circle cx="60" cy="726.02" r="6.82" fill="#D9661A"/><rect x="56.70" y="733.50" width="6.60" height="2.20" rx="1.5" fill="#D9661A"/><rect x="57.80" y="736.58" width="4.40" height="1.76" rx="1.5" fill="#D9661A"/>
+<text x="86.0" y="734.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">LLM call, thinking on</text>
+<g fill="#5B4BDB">
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(0 60 770)"/>
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(45 60 770)"/>
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(90 60 770)"/>
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(135 60 770)"/>
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(180 60 770)"/>
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(225 60 770)"/>
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(270 60 770)"/>
+<rect x="58.13" y="759.00" width="3.74" height="5.50" rx="0.88" transform="rotate(315 60 770)"/>
+<circle cx="60" cy="770" r="7.70"/></g><circle cx="60" cy="770" r="3.30" fill="#FFFFFF"/>
+<text x="86.0" y="776.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">deterministic code</text>
+<rect x="408.0" y="648.0" width="392.0" height="160.0" rx="10" fill="#E6F7F3" stroke="#0E9F8A" stroke-width="1.6"/>
+<text x="428.0" y="694.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="25" font-weight="700" fill="#0E9F8A" text-anchor="start" xml:space="preserve">Verbatim by construction</text>
+<text x="428.0" y="730.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">Quotes are sliced from the passage by ID.</text>
+<text x="428.0" y="755.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">The model never writes one.</text>
+<rect x="836.0" y="648.0" width="344.0" height="160.0" rx="10" fill="#FFF1E3" stroke="#D9661A" stroke-width="1.6"/>
+<text x="856.0" y="694.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="25" font-weight="700" fill="#D9661A" text-anchor="start" xml:space="preserve">31–40% of the tokens</text>
+<text x="856.0" y="730.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">of the same model thinking on every</text>
+<text x="856.0" y="755.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">claim (PiVoT v3).</text>
+<rect x="1216.0" y="648.0" width="360.0" height="160.0" rx="10" fill="#EFEDFD" stroke="#5B4BDB" stroke-width="1.6"/>
+<text x="1236.0" y="694.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="25" font-weight="700" fill="#5B4BDB" text-anchor="start" xml:space="preserve">0.953 · 0.979 accuracy</text>
+<text x="1236.0" y="730.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">on two frozen test sets (v3). Thinking on</text>
+<text x="1236.0" y="755.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18" font-weight="400" fill="#1F2328" text-anchor="start" xml:space="preserve">every claim: 0.959 · 0.952.</text>
+</svg>

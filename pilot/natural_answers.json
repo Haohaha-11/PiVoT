@@ -1,0 +1,35 @@
+[
+ {
+  "id": "natural-01-sqlite-wal-growth",
+  "refs": [
+   "sqlite:16",
+   "sqlite:17",
+   "sqlite:35",
+   "sqlite:36",
+   "sqlite:37",
+   "sqlite:38",
+   "sqlite:39",
+   "sqlite:40",
+   "sqlite:41"
+  ],
+  "q": "What can make a SQLite WAL file keep growing, and what can an application do to keep it under control?",
+  "generator": "glm-5.3",
+  "answer": "In WAL mode, SQLite normally keeps the WAL file in check by automatically checkpointing it at the end of any transaction once it exceeds 1000 pages, transferring its contents into the main database file and rewinding the WAL so new transactions start at the beginning. However, several situations can defeat this and cause unbounded growth: if the application disables or defers the automatic checkpoint mechanism through compile-time or run-time options, nothing prevents the WAL from expanding indefinitely. Checkpoint starvation is another cause, since a checkpoint can only run to completion and reset the WAL when no other connections are using it, so a database with many concurrent overlapping readers and at least one always-active reader will never let a checkpoint finish. Very large write transactions also inflate the WAL because it cannot be reset in the middle of a write transaction, so a big change to a big database can produce a very large file until the transaction commits. Additionally, on SQLite versions before 3.11.0, a transaction that grows larger than the page cache could write the same page into the WAL multiple times, making the file even bigger than the logical size of the change. To keep the WAL under control, applications should leave automatic checkpointing enabled, keep read transactions short, and ensure there are \"reader gaps\"—times when no processes are reading from the database—so checkpoints can complete. For applications with many concurrent readers, running manual checkpoints with the SQLITE_CHECKPOINT_RESTART or SQLITE_CHECKPOINT_TRUNCATE option guarantees the checkpoint runs to completion before returning (and TRUNCATE also shrinks the file to zero), though the tradeoff is that readers may block while it runs. Finally, upgrading to SQLite 3.11.0 or later ensures a single transaction's WAL footprint is proportional to the transaction itself, and pragmas like wal_autocheckpoint and journal_size_limit can be used to tune the checkpoint threshold and cap the file's size on disk."
+ },
+ {
+  "id": "natural-02-redis-rdb-vs-aof",
+  "refs": [
+   "redis:3",
+   "redis:4",
+   "redis:5",
+   "redis:6",
+   "redis:8",
+   "redis:9",
+   "redis:10",
+   "redis:36"
+  ],
+  "q": "For a production Redis deployment, should I use RDB, AOF, or both? Explain the trade-offs.",
+  "generator": "glm-5.3",
+  "answer": "For most production deployments, the safest answer is to enable both persistence methods, since that combination gives you a degree of data safety comparable to what PostgreSQL provides. RDB is a compact, single-file point-in-time snapshot that is ideal for backups and disaster recovery (you can archive hourly snapshots for 24 hours and daily ones for 30 days), it allows faster restarts with large datasets, and it minimizes performance impact because the parent process only forks a child to do the disk I/O. However, RDB's main weakness is durability: since snapshots are typically taken every five minutes or more, you should be prepared to lose the latest minutes of writes if Redis crashes without a clean shutdown, and the frequent fork() calls can stall the server for milliseconds up to a second on very large datasets with weak CPUs. AOF, by contrast, is far more durable—with the default fsync-every-second policy you lose at most one second of writes while write performance remains excellent—and its append-only format resists corruption, can be repaired with redis-check-aof if a command is half-written, and even lets you recover from an accidental FLUSHALL by removing the last command from the log. The trade-offs for AOF are larger file sizes than RDB and potentially slower operation depending on the fsync policy, though with fsync disabled it matches RDB speed, and RDB still offers better maximum-latency guarantees under heavy write loads. If you care about your data but can tolerate losing a few minutes of it in a disaster, RDB alone is a reasonable choice, while AOF alone is discouraged because periodic RDB snapshots are valuable for backups, faster restarts, and protection against bugs in the AOF engine. Note that when both are enabled, Redis will use the AOF file on restart to reconstruct the dataset, since it is guaranteed to be the most complete."
+ }
+]

@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c2\", \"label\": \"C\", \"reason\": \"Passage [2] states only three distinct isolation levels are implemented; Read Uncommitted behaves like Read Committed.\"}]}", "prompt_tokens": 1501, "completion_tokens": 246, "latency_ms": 5370, "cached": false}

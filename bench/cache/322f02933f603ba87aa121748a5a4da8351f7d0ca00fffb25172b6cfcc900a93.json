@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c2\", \"label\": \"C\", \"reason\": \"Passage [0] exec probes every 5s; passage [1] HTTP probes every 3s, so exec probes less often.\"}]}", "prompt_tokens": 2221, "completion_tokens": 157, "latency_ms": 2827, "cached": false}

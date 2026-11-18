@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c11\", \"label\": \"C\", \"reason\": \"Passage 5 says read-only replicas are not intended to be exposed to untrusted networks because DEBUG/CONFIG remain enabled.\"}]}", "prompt_tokens": 2750, "completion_tokens": 196, "latency_ms": 3730, "cached": false}

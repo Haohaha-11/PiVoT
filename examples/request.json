@@ -1,0 +1,7 @@
+{
+  "context_passages": [
+    "WAL mode writes changes to a separate log file. The default page size is 4096 bytes.",
+    "Checkpoints run every 1000 pages."
+  ],
+  "generated_answer": "The default page size is 8192 bytes, and checkpoints run every 1000 pages. WAL is always faster than a rollback journal."
+}

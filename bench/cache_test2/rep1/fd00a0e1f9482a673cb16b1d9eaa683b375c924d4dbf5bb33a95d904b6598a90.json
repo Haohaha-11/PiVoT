@@ -1,0 +1,1 @@
+{"text": "{\"claims\": [{\"id\": \"c21\", \"evidence\": [{\"sid\": \"P10.S0\", \"rel\": \"entails\"}], \"check\": null, \"reasoning\": \"P10.S0 directly states users running commands concurrently must live with some risk of corruption, low in practice; matches the claim.\"}]}", "prompt_tokens": 1709, "completion_tokens": 125, "latency_ms": 2385, "cached": false}

@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c5\", \"label\": \"S\", \"reason\": \"Passage 0 explicitly describes this web browser scenario and sqlite3_limit() enabling unconstrained internal databases while tightly limiting untrusted JavaScript databases.\"}]}", "prompt_tokens": 2135, "completion_tokens": 196, "latency_ms": 5057, "cached": false}

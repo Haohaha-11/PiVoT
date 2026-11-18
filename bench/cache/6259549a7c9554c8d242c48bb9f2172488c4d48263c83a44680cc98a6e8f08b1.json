@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c9\", \"label\": \"U\", \"reason\": \"No passage mentions sqlite3_blob_open() or incremental BLOB reading.\"}, {\"claim_id\": \"c12\", \"label\": \"U\", \"reason\": \"PostgreSQL and its column limit are absent from all passages.\"}]}", "prompt_tokens": 1939, "completion_tokens": 157, "latency_ms": 3065, "cached": false}

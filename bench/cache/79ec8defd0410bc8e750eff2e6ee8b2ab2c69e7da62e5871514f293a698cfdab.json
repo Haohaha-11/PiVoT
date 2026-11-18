@@ -1,0 +1,1 @@
+{"text": "{\"labels\": [{\"claim_id\": \"c6\", \"label\": \"U\", \"reason\": \"Passages 3-5 describe gRPC probes but never mention Kubernetes 1.27 or general availability.\"}]}", "prompt_tokens": 2025, "completion_tokens": 152, "latency_ms": 5373, "cached": false}
