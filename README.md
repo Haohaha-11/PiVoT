@@ -26,11 +26,11 @@ See [Quick start](#-quick-start) to run it, [Results](#-results-at-a-glance) for
 </p>
 
 <p align="center">
-  <a href="assets/pivot-demo.mp4"><img src="assets/pivot-demo-poster.jpg" width="72%" alt="Play the 2-minute demo video"></a>
+  <a href="https://haohaha-11.github.io/PiVoT/"><img src="assets/pivot-demo.gif" width="80%" alt="Demo preview: Dot points at the passages, the claims, the verdicts and the quote. Click to watch the narrated video."></a>
 </p>
 <p align="center">
-  <em>🎬 A 2-minute walkthrough (<a href="assets/pivot-demo.mp4">assets/pivot-demo.mp4</a>). Dot, the PiVoT cat, points at
-  what the narration describes.</em>
+  🎬 <a href="https://haohaha-11.github.io/PiVoT/"><b>Watch the 2-minute narrated demo</b></a> · <a href="assets/pivot-demo.mp4">download the mp4</a><br>
+  <em>The preview above is silent. The full video has narration and captions; Dot, the PiVoT cat, points at what it describes.</em>
 </p>
 
 ## 📌 Results at a glance
@@ -514,4 +514,4 @@ To run against a live model, drop `--cache-mode replay` and set `VERIFIER_API_KE
 | `pilot/` | The three pilot rounds and their findings |
 | `examples/` | The request, response and recorded calls shown above |
 | `tests/` | 53 tests |
-| `assets/`, `tools/` | The logo, the banner cut from it (`tools/make_banner.py`), the overview figure with the script that draws it (`tools/make_overview.py`), and the demo video with its poster |
+| `assets/`, `tools/` | The logo, the banner cut from it (`tools/make_banner.py`), the overview figure with the script that draws it (`tools/make_overview.py`), and the demo video with its preview GIF (the narrated player page is on the `gh-pages` branch) |
