@@ -29,7 +29,7 @@ See [Quick start](#-quick-start) to run it, [Results](#-results-at-a-glance) for
   <a href="https://haohaha-11.github.io/PiVoT/"><img src="assets/pivot-demo.gif" width="80%" alt="Demo preview: Dot points at the passages, the claims, the verdicts and the quote. Click to watch the narrated video."></a>
 </p>
 <p align="center">
-  🎬 <a href="https://haohaha-11.github.io/PiVoT/"><b>Watch the 2-minute narrated demo</b></a> · <a href="assets/pivot-demo.mp4">download the mp4</a><br>
+  🎬 <a href="https://haohaha-11.github.io/PiVoT/"><b>Watch the narrated demo (2:38)</b></a> · <a href="assets/pivot-demo.mp4">download the mp4</a><br>
   <em>The preview above is silent. The full video has narration and captions; Dot, the PiVoT cat, points at what it describes.</em>
 </p>
 
